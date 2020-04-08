@@ -10,7 +10,7 @@ Purpose
 This is a python implementation of the Comparison Model Method (CMM), a direct method to solve inverse problems in hydrogeology,
 and in particular to compute the hydraulic conductivity *T* of a confined aquifer given an initial tentative value of
 *T* and one or more interpolated hydraulic head fields *h*.
-In particular, this version of the CMM heavily relies on the USGS engines of the Modflow family (and Modflof6 in particular) to
+In particular, this version of the CMM heavily relies on the USGS engines of the ``Modflow`` family (and ``Modflow6`` in particular) to
 solve the forward problem.
 
 How do I get set up?
