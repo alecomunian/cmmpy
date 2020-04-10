@@ -1,0 +1,9 @@
+*.~
+*~
+out
+__pycache__
+cmmpy.egg-info
+*.log
+test/out
+
+
