@@ -1,0 +1,75 @@
+{
+    "general" : {
+	"wdir" : "./test06_wells1a1/06_wells06",
+	"data": "../../../data",
+	"out" : "out"
+    },
+    "fwd" : {
+	"ws" : "out",
+	"name" : "test",
+	"exe_name" : "mf6dbl",
+	"bcs" : "bcs_rect.txt",
+	"nx": 57,
+	"ny": 40,
+	"nlay": 1,
+	"dx" : 25,
+	"dy" : 25,
+	"data_sets" : [
+	    {"name": "ds000",
+	     "h_BCs" : "h_flat.vtk",
+	     "rch" : 2.5e-8,
+	     "wells_loc" : [[0, 12, 13]],
+	     "wells_ID" : ["well1"],
+	     "wells_q" : [0.005]},
+	    {"name": "ds001",
+	     "h_BCs" : "h_flat.vtk",
+	     "rch" : 2.5e-8,
+	     "wells_loc" : [[0, 28, 27]],
+	     "wells_ID" : ["well2"],
+	     "wells_q" : [-0.005]},
+	    {"name": "ds002",
+	     "h_BCs" : "h_flat.vtk",
+	     "rch" : 2.5e-8,
+	     "wells_loc" : [[0, 12, 44]],
+	     "wells_ID" : ["well3"],
+	     "wells_q" : [0.005]},
+	    {"name": "ds003",
+	     "h_BCs" : "h_flat.vtk",
+	     "rch" : 2.5e-8,
+	     "wells_loc" : [[0, 28, 13]],
+	     "wells_ID" : ["well4"],
+	     "wells_q" : [-0.005]},
+	    {"name": "ds004",
+	     "h_BCs" : "h_flat.vtk",
+	     "rch" : 2.5e-8,
+	     "wells_loc" : [[0, 12, 27]],
+	     "wells_ID" : ["well5"],
+	     "wells_q" : [0.005]},
+	    {"name": "ds005",
+	     "h_BCs" : "h_flat.vtk",
+	     "rch" : 2.5e-8,
+	     "wells_loc" : [[0, 28, 44]],
+	     "wells_ID" : ["well6"],
+	     "wells_q" : [-0.005]}
+	]
+    },
+    "t_gen" : {
+	"seed" : 46898,
+	"dim" : 2,
+	"var" : 0.3,
+	"len_scale" : 5
+    },
+    "cmm" : {
+	"nb_iter": 10,
+	"cprop" : 0.15,
+	"eps_gradh": 1e-40,
+	"mode": "arithmetic"
+    },
+    "noise" : {
+	"seed" : 771455,
+	"dim" : 2,
+	"std" : 0.000001,
+	"len_scale" : 5
+    }
+}
+ 

@@ -1,0 +1,43 @@
+{
+    "general" : {
+	"wdir" : "./out/test04_noise/20_std002_N-E",
+	"data": "../../../data",
+	"out" : "out"
+    },
+    "fwd" : {
+	"ws" : "out",
+	"name" : "test",
+	"exe_name" : "mf6dbl",
+	"nx": 57,
+	"ny": 40,
+	"nlay": 1,
+	"rch" : 2.5e-8,
+	"dx" : 25,
+	"dy" : 25,
+	"wells_loc" : [[0, 10, 10], [0, 20, 25], [0, 22, 37]],
+	"wells_ID" : ["well1", "well2", "well3"],
+	"wells_q" : [-0.005, 0.005, 0.005]
+    },
+    "input" : {
+	"h_BCs" : ["h_N.vtk", "h_E.vtk"],
+	"bcs" : "bcs_rect.txt"
+    },
+    "t_gen" : {
+	"seed" : 46898,
+	"dim" : 2,
+	"var" : 0.3,
+	"len_scale" : 5
+    },
+    "cmm" : {
+	"nb_iter": 10,
+	"cprop" : 0.15,
+	"eps_gradh": 1e-40,
+	"mode": "arithmetic"
+    },
+    "noise" : {
+	"seed" : 771455,
+	"dim" : 2,
+	"std" : 0.02,
+	"len_scale" : 5
+    }
+}

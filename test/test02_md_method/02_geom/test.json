@@ -1,6 +1,6 @@
 {
     "general" : {
-	"wdir" : "./test02_md_method/02_geom",
+	"wdir" : "./out/test02_md_method/02_geom",
 	"data": "../../../data",
 	"out" : "out"
     },
