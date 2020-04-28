@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 :This file:
 
@@ -11,7 +10,7 @@
 
     This implementation includes:
     - The possibility to use multiple data sets
-    - Uses as Forward Problem (FP) solution engine Modflow2005 through Flopy.
+    - Uses as Forward Problem (FP) solution engine Modflow6 through Flopy.
     - Usage of irregular domains.
 
 :Usage:
@@ -63,7 +62,7 @@ import flopy
 import gstools as gs
 
 # create logger
-module_logger = logging.getLogger('dirinv.tools')
+module_logger = logging.getLogger('cmmpy.tools')
 
 # Default resolution for raster images output
 DPI = 400
@@ -738,6 +737,7 @@ def run_fp(par, spd_h, k, sdir=None, ds=None, noise=False):
                                   k33=k_template)
 
     # Define a constant recharge
+    # (flux rate, units are L/T)
     rcha = flopy.mf6.ModflowGwfrcha(gwf, recharge=par_ds["rch"])
     
     # Define the constant heads

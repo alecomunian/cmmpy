@@ -5,5 +5,8 @@ __pycache__
 cmmpy.egg-info
 *.log
 test/out
+*.pdf
+*.png
+
 
 

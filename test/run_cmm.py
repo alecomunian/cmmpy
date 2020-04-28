@@ -174,6 +174,8 @@ for i in range(nb_iter):
     sdir = "iter{0:03d}".format(i)
 
     # Plot the T field used in this step
+    # WARNING: This plot corresponds to the results of the previous iteration
+    # (or to the initial value for i=0)
     tools.plot_t2(t_cm, par["fwd"]["name"], out_dir=out_dir,
                   mode="iter", it=i, minmax=t_minmax)
 
@@ -197,7 +199,8 @@ for i in range(nb_iter):
         
         t_cmds[j,:,:,:] = cmm.update_t2(h_cmds[j], gmod_cmds[j], h_ref[j], gmod_ref[j], t_cm, t_minmax, par["cmm"], j)
 
-    t_cm = tools.merge_t(t_cmds, t_cm, mode=par["cmm"]["mode"], grad=[gcol_cmds, grow_cmds], flow=flow_cmds)    
+    t_cm = tools.merge_t(t_cmds, t_cm, mode=par["cmm"]["mode"], grad=[gcol_cmds, grow_cmds], flow=flow_cmds)
+    # This should be the computed T corresponding to the right simulation step    
     np.save(os.path.join("out", "{0}_T_iter{1:03d}.npy".format(par["fwd"]["name"],i)), t_cm)
 
     # Plot the error on T

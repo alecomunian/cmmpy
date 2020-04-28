@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 :This file:
 
@@ -11,7 +10,7 @@
 
     This implementation includes:
     - The possibility to use multiple data sets
-    - Uses as Forward Problem (FP) solution engine Modflow2005 through Flopy.
+    - Uses as Forward Problem (FP) solution engine Modflow6 through Flopy.
     - Usage of irregular domains.
 
 :Usage:
