@@ -1,6 +1,6 @@
 {
     "general" : {
-	"wdir" : "./out/test03_md_nbd/01_nbd04",
+	"wdir" : "./out/test08_noise/01_std07_S",
 	"data": "../../../data",
 	"out" : "out"
     },
@@ -8,19 +8,20 @@
 	"ws" : "out",
 	"name" : "test",
 	"exe_name" : "mf6dbl",
+	"bcs" : "bcs_rect.txt",
 	"nx": 57,
 	"ny": 40,
 	"nlay": 1,
-	"rch" : 2.5e-8,
 	"dx" : 25,
 	"dy" : 25,
-	"wells_loc" : [[0, 10, 10], [0, 20, 25], [0, 22, 37]],
-	"wells_ID" : ["well1", "well2", "well3"],
-	"wells_q" : [-0.005, 0.005, 0.005]
-    },
-    "input" : {
-	"h_BCs" : ["h_N.vtk", "h_E.vtk", "h_NE.vtk", "h_SE.vtk"],
-	"bcs" : "bcs_rect.txt"
+	"data_sets" : [
+	    {"name": "ds000",
+	     "h_BCs" : "h_S.vtk",
+	     "rch" : 0.0,
+	     "wells_loc" : [],
+	     "wells_ID" : [],
+	     "wells_q" : []}
+	]
     },
     "t_gen" : {
 	"seed" : 46898,
@@ -32,6 +33,12 @@
 	"nb_iter": 10,
 	"cprop" : 0.15,
 	"eps_gradh": 1e-40,
-	"mode": "arithmetic"
+	"mode": "geometric"
+    },
+    "noise" : {
+	"seed" : 771455,
+	"dim" : 2,
+	"std" : 0.07,
+	"len_scale" : 5
     }
 }

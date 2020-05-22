@@ -46,5 +46,6 @@ dirs = glob.glob("./{0}/**/".format(root_dir))
 
 for i, dir in enumerate(dirs):
     run_string = "./run_cmm.py "+dir+"test.json"+" > "+"./tmp/{0}_{1:02d}.tmp &".format(root_dir, i+1)
+    print(run_string)
     os.system(run_string)
 

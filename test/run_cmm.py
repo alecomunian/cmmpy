@@ -214,7 +214,7 @@ for i in range(nb_iter):
     
     logging.info("*** STOP:  CMM iteration {0:3d}/{1} ***".format(i+1, nb_iter))
 
-
+    
 ddict = {"lmbd": lmbd, "lmbd_abs": lmbd_abs, "lmbd2": lmbd2}
 
 for j in range(nb_ds):

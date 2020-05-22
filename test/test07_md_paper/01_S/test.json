@@ -1,6 +1,6 @@
 {
     "general" : {
-	"wdir" : "./test07_md_paper/01_S",
+	"wdir" : "./out/test07_md_paper/01_S",
 	"data": "../../../data",
 	"out" : "out"
     },

@@ -1,6 +1,6 @@
 {
     "general" : {
-	"wdir" : "./out/test01_c/01_perc000",
+	"wdir" : "./out/test01_c/05_perc000",
 	"data": "../../../data",
 	"out" : "out"
     },

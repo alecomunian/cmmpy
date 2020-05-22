@@ -42,13 +42,13 @@ diagn = []
 
 
 
-diagn.append({"file": "01_arith/out/diagn.csv", "meth": "arithmetic mean" })
-diagn.append({"file": "02_geom/out/diagn.csv",  "meth": "geometric mean"})
-diagn.append({"file": "03_harm/out/diagn.csv",  "meth": "harmonic mean"})
-diagn.append({"file": "04_medi/out/diagn.csv",  "meth": "median"})
+diagn.append({"file": "../out/test02_md_method/01_arith/out/diagn.csv", "meth": "arithmetic mean" })
+diagn.append({"file": "../out/test02_md_method/02_geom/out/diagn.csv",  "meth": "geometric mean"})
+diagn.append({"file": "../out/test02_md_method/03_harm/out/diagn.csv",  "meth": "harmonic mean"})
+diagn.append({"file": "../out/test02_md_method/04_medi/out/diagn.csv",  "meth": "median"})
 #diagn.append({"file": "05_mincX/out/diagn.csv",  "meth": "min.corr.X"})
-diagn.append({"file": "05_darc/out/diagn.csv",  "meth": "Darcy residuals"})
-diagn.append({"file": "06_minc/out/diagn.csv",  "meth": "minimum correction"})
+diagn.append({"file": "../out/test02_md_method/05_darc/out/diagn.csv",  "meth": "Darcy residuals"})
+diagn.append({"file": "../out/test02_md_method/06_minc/out/diagn.csv",  "meth": "minimum correction"})
 
 
 

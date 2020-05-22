@@ -40,7 +40,7 @@ import matplotlib.pylab as pl
 
 
 
-dia = {"file": "01_perc015/out/diagn.csv"}
+dia = {"file": "../out/test01_c/04_perc015/out/diagn.csv"}
 
 
 #fig, ax = pl.subplots(1,4)

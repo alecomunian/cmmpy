@@ -42,7 +42,7 @@ diagn = []
 
 
 for i in range(8):
-    diagn.append({"file": "{0:02d}_wells{1:02d}/out/diagn.csv".format(i+1, i+1), "wells": i+1})
+    diagn.append({"file": "../out/test06_wells1a1/{0:02d}_wells{1:02d}/out/diagn.csv".format(i+1, i+1), "wells": i+1})
 
 
 

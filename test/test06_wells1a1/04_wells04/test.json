@@ -1,6 +1,6 @@
 {
     "general" : {
-	"wdir" : "./test06_wells1a1/04_wells04",
+	"wdir" : "./out/test06_wells1a1/04_wells04",
 	"data": "../../../data",
 	"out" : "out"
     },
@@ -17,28 +17,28 @@
 	"data_sets" : [
 	    {"name": "ds000",
 	     "h_BCs" : "h_flat.vtk",
-	     "rch" : 2.5e-8,
+	     "rch" : 7.9e-9,
 	     "wells_loc" : [[0, 12, 13]],
 	     "wells_ID" : ["well1"],
-	     "wells_q" : [0.005]},
+	     "wells_q" : [-0.025]},
 	    {"name": "ds001",
 	     "h_BCs" : "h_flat.vtk",
-	     "rch" : 2.5e-8,
+	     "rch" : 7.9e-9,
 	     "wells_loc" : [[0, 28, 27]],
 	     "wells_ID" : ["well2"],
-	     "wells_q" : [-0.005]},
+	     "wells_q" : [-0.025]},
 	    {"name": "ds002",
 	     "h_BCs" : "h_flat.vtk",
-	     "rch" : 2.5e-8,
+	     "rch" : 7.9e-9,
 	     "wells_loc" : [[0, 12, 44]],
 	     "wells_ID" : ["well3"],
-	     "wells_q" : [0.005]},
+	     "wells_q" : [-0.025]},
 	    {"name": "ds003",
 	     "h_BCs" : "h_flat.vtk",
-	     "rch" : 2.5e-8,
+	     "rch" : 7.9e-9,
 	     "wells_loc" : [[0, 28, 13]],
 	     "wells_ID" : ["well4"],
-	     "wells_q" : [-0.005]}
+	     "wells_q" : [-0.025]}
 	]
     },
     "t_gen" : {

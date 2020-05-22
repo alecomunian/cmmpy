@@ -52,13 +52,13 @@ ly = par["fwd"]["ny"]*par["fwd"]["dy"]
 T={}
 
 
-T["ref"] = np.load("01_arith/out/test_T_ref.npy")
-T["arith"] = np.load("01_arith/out/test_T_iter009.npy")
-T["geom"] = np.load("02_geom/out/test_T_iter009.npy")
-T["harm"] = np.load("03_harm/out/test_T_iter009.npy")
-T["medi"] = np.load("04_medi/out/test_T_iter009.npy")
-T["darc"] = np.load("05_darc/out/test_T_iter009.npy")
-T["minc"] = np.load("06_minc/out/test_T_iter009.npy")
+T["ref"] = np.load("../out/test02_md_method/01_arith/out/test_T_ref.npy")
+T["arith"] = np.load("../out/test02_md_method/01_arith/out/test_T_iter009.npy")
+T["geom"] = np.load("../out/test02_md_method/02_geom/out/test_T_iter009.npy")
+T["harm"] = np.load("../out/test02_md_method/03_harm/out/test_T_iter009.npy")
+T["medi"] = np.load("../out/test02_md_method/04_medi/out/test_T_iter009.npy")
+T["darc"] = np.load("../out/test02_md_method/05_darc/out/test_T_iter009.npy")
+T["minc"] = np.load("../out/test02_md_method/06_minc/out/test_T_iter009.npy")
 
 t_min = np.min(T["ref"])
 t_max = np.max(T["ref"])

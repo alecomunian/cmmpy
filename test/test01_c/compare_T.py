@@ -106,5 +106,5 @@ fig.colorbar(im, cax=cbar_ax)
 
 #pl.tight_layout()
 
-pl.savefig("compare_T", dpi=400)
+pl.savefig("compare_T.png", dpi=400)
 pl.savefig("compare_T.pdf")
