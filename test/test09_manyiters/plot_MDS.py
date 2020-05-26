@@ -51,7 +51,9 @@ for i in range(tot_iter):
 X[-1,:] = np.ravel(np.load("../out/test02_md_method/01_arith/out/test_T_ref.npy"))
 
 clf = sm.MDS(n_components=2)
-X_mds = clf.fit_transform(X)
+X_mds = clf.fit_transform((X))
+#X_mds = clf.fit_transform(np.log10(X))
+print("Done. Stress: %f" % clf.stress_)
 
 #print(X_mds)
 
