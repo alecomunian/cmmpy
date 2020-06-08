@@ -72,10 +72,10 @@ xlab = [False, False, False,  True, True]
 ylab = [True, False, False,  False, False]
 titles = [
     "a) $T_\mathrm{ref}$",
-    "b) $T^9$ - S",
-    "c) $T^9$ - S, SW",
-    "d) $T^9$ - S, SW, W",
-    "e) $T^9$ - S, SW, W, NW"
+    "b) $T^{10}$ - S",
+    "c) $T^{10}$ - S, SW",
+    "d) $T^{10}$ - S, SW, W",
+    "e) $T^{10}$ - S, SW, W, NW"
     ]
 
 for i in range(5):
