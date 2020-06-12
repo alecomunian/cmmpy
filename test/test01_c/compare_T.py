@@ -72,12 +72,12 @@ item = ["ref", "100", "060", "030", "015", "000"]
 xlab = [False, False, False, True, True, True]
 ylab = [True, False, False, True, False, False]
 titles = [
-    "a) $T_\mathrm{ref}$",
-    "b) $T^{10}$, 100\%",
-    "c) $T^{10}$, 60\%",
-    "d) $T^{10}$, 30\%",
-    "e) $T^{10}$, 15\%",
-    "f) $T^{10}$, 0\%"
+    "a) $T^\mathrm{(ref)}$",
+    "b) $T_{10}$, 100\%",
+    "c) $T_{10}$, 60\%",
+    "d) $T_{10}$, 30\%",
+    "e) $T_{10}$, 15\%",
+    "f) $T_{10}$, 0\%"
     ]
 
 for i in range(6):

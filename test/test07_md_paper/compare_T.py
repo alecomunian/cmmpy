@@ -71,11 +71,11 @@ item = ["ref", "01", "02", "03", "04"]
 xlab = [False, False, False,  True, True]
 ylab = [True, False, False,  False, False]
 titles = [
-    "a) $T_\mathrm{ref}$",
-    "b) $T^{10}$ - S",
-    "c) $T^{10}$ - S, SW",
-    "d) $T^{10}$ - S, SW, W",
-    "e) $T^{10}$ - S, SW, W, NW"
+    "a) $T^\mathrm{ref}$",
+    "b) $T_{10}$ - S",
+    "c) $T_{10}$ - S, SW",
+    "d) $T_{10}$ - S, SW, W",
+    "e) $T_{10}$ - S, SW, W, NW"
     ]
 
 for i in range(5):

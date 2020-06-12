@@ -60,7 +60,7 @@ fig, ax = pl.subplots(1,2, sharey=True)
 A_max = 0.1 #np.max(np.abs(A))
 
 
-ax[0].set_title("a) $A^{{{0}}}$ ($\si{{m}}$)".format(it+1))
+ax[0].set_title("a) $A_{{{0}}}$ ($\si{{m}}$)".format(it+1))
 
 #im = ax[0].imshow(A[0,:,:], interpolation="none", cmap="PiYG", extent=(0.0,lx,0.0,ly ))
 im = ax[0].imshow(A[0,:,:], interpolation="none", vmin=-A_max, vmax=A_max, cmap="PiYG", extent=(0.0,lx,0.0,ly ))
@@ -76,7 +76,7 @@ vmin  = -fixed_odg_T
 vmax  = fixed_odg_T
 
 err_abs = np.abs(err)
-ax[1].set_title("b) $\log(T^\mathrm{{(ref)}})-\log(T^\mathrm{{{0}}})$".format(it+1))
+ax[1].set_title("b) $\log(T^\mathrm{{(ref)}})-\log(T_\mathrm{{{0}}})$".format(it+1))
 im = ax[1].imshow(err, vmin=vmin, vmax=vmax, interpolation="none",
                   cmap="Spectral", extent=(0.0,lx,0.0,ly ))
 divider = make_axes_locatable(ax[1])

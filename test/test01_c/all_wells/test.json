@@ -1,0 +1,44 @@
+{
+    "general" : {
+	"wdir" : "./out/test01_c/01_perc100",
+	"data": "../../../data",
+	"out" : "out"
+    },
+    "fwd" : {
+	"ws" : "out",
+	"name" : "test",
+	"exe_name" : "mf6dbl",
+	"bcs" : "bcs_rect.txt",
+	"nx": 57,
+	"ny": 40,
+	"nlay": 1,
+	"dx" : 25,
+	"dy" : 25,
+	"data_sets" : [
+	    {"name": "ds000",
+	     "h_BCs" : "h_S.vtk",
+	     "rch" : 7.9e-9,
+	     "wells_loc" : [[0, 12, 13],[0, 28, 27],[0, 12, 44],[0, 28, 13],[0, 12, 27],[0, 28, 44],[0, 20, 20],[0, 20, 35]],
+	     "wells_ID" : ["well1", "well2", "well3", "well4", "well5", "well6","well7", "well8"],
+	     "wells_q" : [-0.025, -0.025, -0.025, -0.025, -0.025, -0.025, -0.025, -0.025]}
+	]
+    },
+    "t_gen" : {
+	"seed" : 46898,
+	"dim" : 2,
+	"var" : 0.3,
+	"len_scale" : 5
+    },
+    "cmm" : {
+	"nb_iter": 10,
+	"cprop" : 1.0,
+	"eps_gradh": 1e-40,
+	"mode": "arithmetic"
+    },
+    "noise" : {
+	"seed" : 771455,
+	"dim" : 2,
+	"std" : 0.0000001,
+	"len_scale" : 5
+    }
+}
