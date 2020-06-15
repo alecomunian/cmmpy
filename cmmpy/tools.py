@@ -67,6 +67,9 @@ module_logger = logging.getLogger('cmmpy.tools')
 # Default resolution for raster images output
 DPI = 400
 
+# Order of the numpy.gradient approximation for the edges
+edge_order = 2
+
 # This is for fixed imshow representations of T
 fixed_odg_T = 2
 
@@ -239,7 +242,7 @@ def mod_grad(data):
     ATTENZIONE: CONTROLLARE CHE VENGA TENUTO CONTO ANCHE DELLA DISCRETIZZAZIONE!
     """
     # Compute the gradient
-    data_grad = np.gradient(data,2) # ATTENZIONE, VERIFICARE!
+    data_grad = np.gradient(data,2, edge_order=edge_order) # ATTENZIONE, VERIFICARE!
     # SE SI VEDE LA DOCUMENTAZIONE DI GRAD, È POSSIBILE ANCHE SPECIFICARE IL DX E IL DY... QUINDI IL 2 NON È DETTO CHE SIA L'ASSE
     # PERCHÈ AVEVO MESSO 2?
     # Compute the absolute value
@@ -822,7 +825,7 @@ def run_fp(par, spd_h, k, sdir=None, ds=None, noise=False):
 
     # - QUI POTREI GUARDARE COME FANNO SU get_gradient IN flopy PER TRATTARE CON I MASKED ARRAYS
     # - TIENE CONTO ANCHE DELLA TAGLIA DELLE CELLE...
-    gcol, grow = np.gradient(head[0,:,:], delc, delr)
+    gcol, grow = np.gradient(head[0,:,:], delc, delr, edge_order=edge_order)
 
     # Here compute the module of the gradient
     gmod = mod_grad2(gcol, grow)
