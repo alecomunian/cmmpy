@@ -1,40 +1,90 @@
 README
 ======
 
-A python implementation of the Comparison Model Method (CMM).
+This is the README file for a collection of Python scripts that implement
+the Comparison Model Method (CMM).
+
+For more details about the tests and the methodology, please see the
+manuscript, submitted to `Computers & Geosciences` "Improving the
+robustness of the Comparison Model Method for the identification of
+hydraulic transmissivities" by A.Comunian and M.Giudici.
 
 
 Purpose
---------------
+=====================
 
-This is a python implementation of the Comparison Model Method (CMM), a direct method to solve inverse problems in hydrogeology,
-and in particular to compute the hydraulic conductivity *T* of a confined aquifer given an initial tentative value of
-*T* and one or more interpolated hydraulic head fields *h*.
-In particular, this version of the CMM heavily relies on the USGS engines of the ``Modflow`` family (and ``Modflow6`` in particular) to
-solve the forward problem.
+This is a python implementation of the Comparison Model Method (CMM),
+a direct method to solve inverse problems in hydrogeology, and in
+particular to compute the hydraulic conductivity *T* of a confined
+aquifer given an initial tentative value of *T* and one or more
+interpolated hydraulic head fields *h*.  This implementation of the
+CMM heavily relies on the USGS engines of the `Modflow
+<https://www.usgs.gov/mission-areas/water-resources/science/modflow-and-related-programs>`_
+family (and `Modflow6
+<https://www.usgs.gov/software/modflow-6-usgs-modular-hydrologic-model>`_
+in particular) to solve the forward problem, facilitated by the use of
+the Python module `flopy
+<https://www.usgs.gov/software/flopy-python-package-creating-running-and-post-processing-modflow-based-models>`_. Nevertheless,
+it can be adapted to make use of other engines for the solution of the
+forward problem.
 
-How do I get set up?
+Installation
+=====================
+
+Requirements
+--------------------
+
+In addition to the common Python modules ``numpy``, ``scipy`` and
+``matplotlib``, this codes requires a recent version of ``flopy``.
+
+.. note::
+
+   You should adapt the name of the ``Modflow6`` executable name
+   defined in the JSON configuration file (variable ``exe_name``) provided for the
+   corresponding test case. For a general example, have a look at the
+   file ``cmmpy/test/template/test.json``.
+   
+Download and install
+-----------------------------
+
+A the moment the package is not available from the `Python Package
+Index repository <https://pypi.org>`_, therefore to install it you
+need to:
+
+1) Download or clone the repository from the link
+   `https://bitbucket.org/alecomunian/cmmpy
+   <https://bitbucket.org/alecomunian/cmmpy>`_,
+   and unpack it if needed.
+2) Move into the project directory (``cd cmmpy``) and from the command line run::
+
+     pip install -e .
+
+3) To check if the installation worked, open a Python terminal and try::
+
+       import cmmpy
+   
+   If there are no errors, then the installation will probably work.
+
+
+Run the tests
 ---------------------------
 
-(to be completed)
+1) Move into the folder ``ŧest``.
+2) Then, from the shell, use the script ``run_cmm.py`` to run the corresponing test. The name of
+   the JSON parameter file should be provided as a unique input argument, like for example::
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+     ./run_cmm.py template/test.json
 
-Contribution guidelines
---------------------------
+3) This should create (in the folder defined by the ``wdir`` variable in the JSON parameter file)
+   all the output of the selected test.
 
-(to be completed)
-
-* Writing tests
-* Code review
-* Other guidelines
+If you want to run multiple test, have a look at the script ``run_all.py``.
+   
 
 Contacts
 ----------------------
-This code was developed by the `HydroGeophysics Lab. <https://sites.unimi.it/labidrogeofisica/>`_ of the University of Milan.
-Please do not hesitate to contact us should you require more information or interested in contributing.
+
+This code was developed by the `HydroGeophysics
+Lab. <https://sites.unimi.it/labidrogeofisica/>`_ of the University of
+Milan.  Please do not hesitate to contact us should you require more
+information or interested in contributing.
