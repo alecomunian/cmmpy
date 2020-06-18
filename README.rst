@@ -1,14 +1,15 @@
-README
+README	
 ======
 
 This is the README file for a collection of Python scripts that implement
-the Comparison Model Method (CMM) [1]_, [2]_, [3]_ and [4]_.
+the Comparison Model Method (CMM, [1]_, [2]_, [3]_ and [4]_).
 
 For more details about the tests and the methodology, please see the
 manuscript "Improving the robustness of the Comparison Model Method
 for the identification of hydraulic transmissivities" by A.Comunian
 and M.Giudici (submitted to `Computers & Geosciences`).
 
+|
 
 Purpose
 =====================
@@ -28,8 +29,12 @@ the Python module `flopy
 it can be adapted to make use of other engines for the solution of the
 forward problem.
 
+|
+
 Installation
 =====================
+
+|
 
 Requirements
 --------------------
@@ -43,7 +48,9 @@ In addition to the common Python modules ``numpy``, ``scipy`` and
    defined in the JSON configuration file (variable ``exe_name``) provided for the
    corresponding test case. For a general example, have a look at the
    file ``cmmpy/test/template/test.json``.
-   
+
+|
+
 Download and install
 -----------------------------
 
@@ -65,13 +72,14 @@ need to:
    
    If there are no errors, then the installation will probably work.
 
+|
 
 Run the tests
 ---------------------------
 
 1) Move into the folder ``ŧest``.
 2) Then, from the shell, use the script ``run_cmm.py`` to run the
-   corresponing test by providing the name of the JSON parameter file
+   corresponding test by providing the name of the JSON parameter file
    as unique input argument, like for example::
 
      ./run_cmm.py template/test.json
@@ -81,6 +89,7 @@ Run the tests
 
 If you want to run multiple test, have a look at the script ``run_all.py``.
    
+|
 
 Contacts
 ----------------------
@@ -90,23 +99,25 @@ Lab. <https://sites.unimi.it/labidrogeofisica/>`_ of the University of
 Milan.  Please do not hesitate to contact us should you require more
 information or interested in contributing.
 
+|
+
 
 References
 -------------------
 
 .. [1] Scarascia, S. and Ponzini, G., "An approximate solution of the
-       inverse problem in hydraulics" in L'Energia Elettrica (1972), pp
-       518–531, Volume 49
+       inverse problem in hydraulics" in L'Energia Elettrica (1972),
+       pp 518–531, Volume 49
 
 .. [2] Ponzini, G. and Crosta, G., "The comparison model method: A new
-       arithmetic approach to the discrete inverse problem of groundwater
-       hydrology", Transport in Porous Media, DOI: `10.1007/BF00233178
-      <http://dx.doi.org/10.1007/BF00233178>`_
+       arithmetic approach to the discrete inverse problem of
+       groundwater hydrology", Transport in Porous Media, DOI:
+       `10.1007/BF00233178 <http://dx.doi.org/10.1007/BF00233178>`_
 
 .. [3] Ponzini, G. and Crosta, G. and Giudici, M. "Identification of
        thermal conductivities by temperature gradient profiles;
-       one-dimensional steady flow", Geophysics, DOI: `10.1190/1.1442691
-       <http://dx.doi.org/10.1190/1.1442691>`_
+       one-dimensional steady flow", Geophysics, DOI:
+       `10.1190/1.1442691 <http://dx.doi.org/10.1190/1.1442691>`_
 
 .. [4] Ponzini, G. and Lozej, A., "Identification of aquifer
        transmissivities: The comparison model method", Water Resources
