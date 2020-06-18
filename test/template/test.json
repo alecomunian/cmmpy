@@ -16,17 +16,29 @@
 	"dy" : 25,
 	"data_sets" : [
 	    {"name": "ds000",
-	     "h_BCs" : "h_flat.vtk",
-	     "rch" : 7.9e-9,
-	     "wells_loc" : [[0, 12, 13],[0, 28, 27],[0, 12, 44],[0, 28, 13],[0, 12, 27],[0, 28, 44],[0, 20, 20],[0, 20, 35]],
-	     "wells_ID" : ["well1", "well2", "well3", "well4", "well5", "well6","well7", "well8"],
-	     "wells_q" : [-0.025, -0.025, -0.025, -0.025, -0.025, -0.025, -0.025, -0.025]},
-	    {"name": "ds001",
-	     "h_BCs" : "h_flat.vtk",
-	     "rch" : 1.0e-8,
-	     "wells_loc" : [[0, 12, 13]],
-	     "wells_ID" : ["well1"],
-	     "wells_q" : [0.005]}
+	     "h_BCs" : "h_S.vtk",
+	     "rch" : 0.0,
+	     "wells_loc" : [],
+	     "wells_ID" : [],
+	     "wells_q" : []},
+	    {"name": "ds000",
+	     "h_BCs" : "h_W.vtk",
+	     "rch" : 0.0,
+	     "wells_loc" : [],
+	     "wells_ID" : [],
+	     "wells_q" : []},
+	    {"name": "ds000",
+	     "h_BCs" : "h_SW.vtk",
+	     "rch" : 0.0,
+	     "wells_loc" : [],
+	     "wells_ID" : [],
+	     "wells_q" : []},
+	    {"name": "ds000",
+	     "h_BCs" : "h_NW.vtk",
+	     "rch" : 0.0,
+	     "wells_loc" : [],
+	     "wells_ID" : [],
+	     "wells_q" : []}
 	]
     },
     "t_gen" : {
@@ -39,13 +51,12 @@
 	"nb_iter": 10,
 	"cprop" : 0.15,
 	"eps_gradh": 1e-40,
-	"mode": "arithmetic"
+	"mode": "geometric"
     },
     "noise" : {
 	"seed" : 771455,
 	"dim" : 2,
-	"std" : 0.000001,
+	"std" : 0.0000001,
 	"len_scale" : 5
     }
 }
- 
