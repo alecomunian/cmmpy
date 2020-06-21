@@ -121,4 +121,4 @@ References
 
 .. [4] Ponzini, G. and Lozej, A., "Identification of aquifer
        transmissivities: The comparison model method", Water Resources
-       Research, `10.1029/WR018i003p00597 <10.1029/WR018i003p00597>`_
+       Research, DOI: `10.1029/WR018i003p00597 <10.1029/WR018i003p00597>`_

@@ -1,35 +1,52 @@
 #!/usr/bin/env python3
 """
+:License:
+    This file is part of cmmpy.
+
+    cmmpy is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    cmmpy is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with cmmpy.  If not, see <https://www.gnu.org/licenses/>.
+
 :This file:
 
     `run_cmm.py`
 
 :Purpose:
 
-    A sample script
+    Run the CMM.
 
 :Usage:
 
-    Explain here how to use it.
+    From the command line::
+
+      ./run_cmm.py <file.json>
+
+    For example, you could use::
+
+      ./run_cmm.py template/test.json
 
 :Parameters:
+
+    <file.json>
+        This is a JSON file containing all the parameters required to run the CMM.
+        See the file `template/test.json` for more details.
 
 :Version:
 
     0.1 , YYYY-MM-DD :
 
-        * First version
-
 :Authors:
 
     Alessandro Comunian
-
-.. notes::
-
-    This script is part of the GRN ("Geofisica per i rischi naturali")
-    practical classes.
-
-PRIMO TENTATIVO: SOLO UN DATA SET.
 
 """
 import os

@@ -1,16 +1,38 @@
 #!/usr/bin/env python3
 """
+:License:
+    This file is part of cmmpy.
+
+    cmmpy is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    cmmpy is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with cmmpy.  If not, see <https://www.gnu.org/licenses/>.
+
 :This file:
 
-    `script.py`
+    `run_all.py`
 
 :Purpose:
 
-    A sample script
+    Run a many CMM simulations.
 
 :Usage:
 
-    Explain here how to use it.
+    You can run it from the command line by using something like::
+
+      ./run_all.py <directory>
+
+    Where in the place of  <directory> you should put a directory containing
+    a number of sub-directories containing a JSON file containing the 
+    required run parameters. 
 
 :Parameters:
 
@@ -18,19 +40,10 @@
 
     0.1 , YYYY-MM-DD :
 
-        * First version
 
 :Authors:
 
     Alessandro Comunian
-
-.. notes::
-
-.. warning::
-
-.. limitations::
-
-
 
 """
 import os
