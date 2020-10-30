@@ -1,0 +1,24 @@
+# This is a sample build configuration for Python.
+# Check our guides at https://confluence.atlassian.com/x/x4UWN for more examples.
+# Only use spaces to indent your .yml configuration.
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+image: python:3.8.5
+
+pipelines:
+  default:
+    - step:
+        caches:
+          - pip
+        script: # Modify the commands below to build your repository.
+          - pip install .
+    - step:
+        name: Manually upload to PyPI
+        trigger: manual
+        script:
+            - pipe: atlassian/pypi-publish:0.2.12
+              variables:
+                  PYPI_USERNAME: $PYPI_USERNAME
+                  PYPI_PASSWORD: $PYPI_PASSWORD
+
+          

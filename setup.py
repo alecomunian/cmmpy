@@ -13,11 +13,21 @@ setuptools.setup(
     long_description_content_type="text/x-rst",
     url="https://bitbucket.org/alecomunian/cmmpy",
     packages=setuptools.find_packages(where="cmmpy"),
+    py_modules=[cmmpy,tools],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: GNU GPL License",
         "Operating System :: OS Independent",
+        'Development Status :: 4 - Beta',
+        'Intended Audience :: Science/Research',
+        'Topic :: Scientific/Engineering'
     ],
+    keywords = "hydrogelogy, modelling, inverse problem, direct inverse problem, modflow, flopy",
+    project_urls = {
+        'Documentation': 'https://cmmpy.readthedocs.io/en/latest/index.html',
+        'Source': 'https://bitbucket.org/alecomunian/cmmpy',
+        },
+    
     python_requires='>=3.6',
     include_package_data = True,
     install_requires=[
@@ -29,4 +39,5 @@ setuptools.setup(
         "gstools",
         ],
     py_modules = ["tools", "cmm"],
+    package_dir = {"":, "."}
 )
