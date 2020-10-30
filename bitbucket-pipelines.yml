@@ -16,7 +16,7 @@ pipelines:
         name: Manually upload to PyPI
         trigger: manual
         script:
-            - pipe: atlassian/pypi-publish:0.2.12
+            - pipe: atlassian/pypi-publish:0.3.1
               variables:
                   PYPI_USERNAME: $PYPI_USERNAME
                   PYPI_PASSWORD: $PYPI_PASSWORD
