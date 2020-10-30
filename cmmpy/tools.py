@@ -77,6 +77,7 @@ import flopy
 # This is to generate the heterogeneous K
 import gstools as gs
 
+
 # create logger
 module_logger = logging.getLogger('cmmpy.tools')
 
@@ -95,7 +96,7 @@ matplotlib.rcParams['mathtext.rm'] = 'Bitstream Vera Sans'
 matplotlib.rcParams['mathtext.it'] = 'Bitstream Vera Sans:italic'
 matplotlib.rcParams['mathtext.bf'] = 'Bitstream Vera Sans:bold'
 pl.rc('text', usetex=True)
-#pl.rc('text.latex', preamble=r'\usepackage{siunitx}')
+pl.rc('text.latex', preamble=r'\usepackage{siunitx}')
 
 def plot_h(h, modelname, out_dir="out", mode="ref", extent=None, ptype="imshow", mask=None):
     """

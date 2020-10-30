@@ -1,0 +1,62 @@
+{
+    "general" : {
+	"wdir" : "./out/test10_md_natural/04_00-10-20-30",
+	"data": "../../../data",
+	"out" : "out"
+    },
+    "fwd" : {
+	"ws" : "out",
+	"name" : "test",
+	"exe_name" : "mf6dbl",
+	"bcs" : "bcs_rect.txt",
+	"nx": 57,
+	"ny": 40,
+	"nlay": 1,
+	"dx" : 25,
+	"dy" : 25,
+	"data_sets" : [
+	    {"name": "ds000",
+	     "h_BCs" : "natural00.vtk",
+	     "rch" : 0.0,
+	     "wells_loc" : [],
+	     "wells_ID" : [],
+	     "wells_q" : []},
+	    {"name": "ds001",
+	     "h_BCs" : "natural10.vtk",
+	     "rch" : 0.0,
+	     "wells_loc" : [],
+	     "wells_ID" : [],
+	     "wells_q" : []},
+	    {"name": "ds002",
+	     "h_BCs" : "natural20.vtk",
+	     "rch" : 0.0,
+	     "wells_loc" : [],
+	     "wells_ID" : [],
+	     "wells_q" : []},
+	    {"name": "ds003",
+	     "h_BCs" : "natural30.vtk",
+	     "rch" : 0.0,
+	     "wells_loc" : [],
+	     "wells_ID" : [],
+	     "wells_q" : []}
+	]
+    },
+    "t_gen" : {
+	"seed" : 46898,
+	"dim" : 2,
+	"var" : 0.3,
+	"len_scale" : 5
+    },
+    "cmm" : {
+	"nb_iter": 10,
+	"cprop" : 0.15,
+	"eps_gradh": 1e-40,
+	"mode": "geometric"
+    },
+    "noise" : {
+	"seed" : 771455,
+	"dim" : 2,
+	"std" : 0.0,
+	"len_scale" : 5
+    }
+}
