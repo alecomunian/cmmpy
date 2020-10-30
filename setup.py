@@ -13,7 +13,6 @@ setuptools.setup(
     long_description_content_type="text/x-rst",
     url="https://bitbucket.org/alecomunian/cmmpy",
     packages=setuptools.find_packages(where="cmmpy"),
-    py_modules=[cmmpy,tools],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: GNU GPL License",
