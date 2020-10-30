@@ -39,5 +39,5 @@ setuptools.setup(
         "gstools",
         ],
     py_modules = ["tools", "cmm"],
-    package_dir = {"":, "."}
+    package_dir = {"": "."}
 )
