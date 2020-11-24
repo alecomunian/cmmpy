@@ -94,7 +94,7 @@ cbar.ax.set_yticklabels(['E', 'D', 'I'])
 t_min = np.min(T)
 t_max = np.max(T)
 
-ax[1].set_title("b) $T^\mathrm{(ref)}$ ($\si{m^2/s}$)")
+ax[1].set_title("b) $T^\mathrm{(ref)}$ ($\mathrm{m^2/s}$)")
 im = ax[1].imshow(T[0,:,:], norm=LogNorm(vmin=t_min, vmax=t_max),
                interpolation="none", cmap="inferno", extent=(0.0,lx,0.0,ly ))
 divider = make_axes_locatable(ax[1])
@@ -105,6 +105,6 @@ pl.colorbar(im, cax=cax)
 
 pl.tight_layout()
 
-pl.savefig("domain_and_Terr.png", dpi=400)
-pl.savefig("domain_and_Terr.pdf")
+pl.savefig("domain_and_Tref.png", dpi=400)
+pl.savefig("domain_and_Tref.pdf")
 

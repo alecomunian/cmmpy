@@ -54,13 +54,13 @@ diagn.append({"file": "../out/test01_c/01_perc100/out/diagn.csv", "perc": 100})
 for dia in diagn:
     data = pd.read_csv(dia["file"])
     it = np.arange(1, data["lmbd2"].size+1)
-    pl.plot(it, data["lmbd2"], "-o", label="{0}\% data".format(dia["perc"]))
+    pl.plot(it, data["lmbd2"], "-o", label="{0}% data".format(dia["perc"]))
 
 pl.xlabel("iteration")
 pl.title("$\lambda^2$")    
 pl.legend()
-pl.savefig("compare_diagn.png", dpi=400)
-pl.savefig("compare_diagn.pdf")
+pl.savefig("compare_diagn_c.png", dpi=400)
+pl.savefig("compare_diagn_c.pdf")
 pl.show()    
     
 

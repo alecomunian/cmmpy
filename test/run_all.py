@@ -49,7 +49,6 @@
 import os
 import sys
 import glob
-import subprocess
 
 root_dir = sys.argv[1]
 

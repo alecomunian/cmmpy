@@ -158,13 +158,15 @@ for i in range(nb_ds):
     h_ref[i], gcol_ref[i], grow_ref[i], gmod_ref[i], spdis[i] = tools.run_fp(
         par, spd_h[i], k_ref, sdir="ref", ds=i, noise=True)
 
+
 #    tools.plot_h(h_ref[i], "ref/ds{0:03d}".format(i), mode="ref")
 #    print(os.getcwd())
     tools.save_h_vtk(h_ref[i], par, "out/ref/ds{0:03d}".format(i))
     tools.plot_domain(domain, cout_dir, par, i)
     
     beta_size, par["cmm"]["c"][i] = cmm.beta_size2(gmod_ref[i], par["cmm"])
-    logging.info("Corrected gradients (Beta) : {0:3.2f} % (c={1:.2e})".format( beta_size, par["cmm"]["c"][i]))
+    logging.info("Corrected gradients (Beta) : {0:3.2f} % (c={1:.2e})".format(
+            beta_size, par["cmm"]["c"][i]))
 
 # Initial value for T
 # (for simplicity, we can start with the geometric mean of t_ref
@@ -174,6 +176,10 @@ t_cm = ss.gmean(t_ref, axis=None)*np.ones(t_ref.shape)
 lmbd = np.zeros((nb_iter))
 lmbd_abs = np.zeros((nb_iter))
 lmbd2 = np.zeros((nb_iter))
+# Relative error on the gradient
+g_rel = np.zeros(h_ref[0].shape+(nb_iter, nb_ds))
+
+
 
 t_cmds = np.zeros([nb_ds]+list(t_cm.shape))
 h_cmds = [None]*nb_ds
@@ -214,9 +220,15 @@ for i in range(nb_iter):
 
         anomaly[i,j] = np.mean(np.abs(A))
         
-        t_cmds[j,:,:,:] = cmm.update_t2(h_cmds[j], gmod_cmds[j], h_ref[j], gmod_ref[j], t_cm, t_minmax, par["cmm"], j)
+        t_cmds[j,:,:,:] = cmm.update_t2(h_cmds[j], gmod_cmds[j], h_ref[j],
+              gmod_ref[j], t_cm, t_minmax, par["cmm"], j)
+        # Relative error on gradients
+        g_rel[0,:,:,i,j] = np.hypot(gcol_cmds[j] - gcol_ref[j],
+             grow_cmds[j] - grow_ref[j])/np.hypot(gcol_ref[j], grow_ref[j])
+    
 
-    t_cm = tools.merge_t(t_cmds, t_cm, mode=par["cmm"]["mode"], grad=[gcol_cmds, grow_cmds], flow=flow_cmds)
+    t_cm = tools.merge_t(t_cmds, t_cm, mode=par["cmm"]["mode"],
+                         grad=[grow_ref, gcol_ref], flow=flow_cmds)
     # This should be the computed T corresponding to the right simulation step    
     np.save(os.path.join("out", "{0}_T_iter{1:03d}.npy".format(par["fwd"]["name"],i)), t_cm)
 
@@ -227,7 +239,8 @@ for i in range(nb_iter):
     lmbd[i] = np.sum(np.log10(t_cm) - np.log10(t_ref))/t_ref.size
     lmbd_abs[i] = np.sum(np.abs(np.log10(t_cm) - np.log10(t_ref)))/t_ref.size
     lmbd2[i] = np.sum((np.log10(t_cm) - np.log10(t_ref))**2)/t_ref.size
-    
+
+  
     
     logging.info("*** STOP:  CMM iteration {0:3d}/{1} ***".format(i+1, nb_iter))
 
@@ -241,6 +254,8 @@ diagn = pd.DataFrame(ddict)
 
 diagn.to_csv(os.path.join(out_dir, "diagn.csv"), float_format="%.4e",
              index=False)
+np.save(os.path.join(out_dir, "g_rel"), g_rel)
+
 tools.plot_diagn(diagn)
 
 stop = timeit.default_timer()

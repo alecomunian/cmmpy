@@ -31,35 +31,23 @@
 
 :Usage:
 
-    Explain here how to use it.
-
-:Parameters:
+    See the documentation and the usage examples.
 
 :Version:
 
-    0.1 , YYYY-MM-DD :
-
-        * First version
+    See file setup.py. Last modifications: 2020-11-06
 
 :Authors:
 
     Alessandro Comunian
 
-.. notes::
-
-.. warning::
-
-.. limitations::
-
 .. future developments::
 
-    - Extend to Parflow and Modflow6 (unstructured grids).
+    - Extend to Parflow and Modflow2005.
     
 .. research directions::
     
     - Investigate what happens when the number of iteration increases.
-    - Try with a as more tomographic as possible approach, where flow is 
-      run along many direction, to check the limits of the methodology.
     - Check different initializations of the Tini.
 
 """
@@ -111,20 +99,20 @@ def update_t(h_cm, h_ref, t_est, t_min, t_max, par, mask=None, mode="arithmetic"
     # Compute |grad|
     mod_h_cm, h_cm_grad = tools.mod_grad(h_cm)
     diagn["mod_h_cm"] = mod_h_cm
-#    print("mod_h_cm.shape", mod_h_cm.shape)
-    mod_h_ref, h_ref_grad = tools.mod_grad(h_ref) # UNA SOLA VOLTA!
-    diagn["mod_h_ref"] = mod_h_ref # UNA SOLA VOLTA!
+    mod_h_ref, h_ref_grad = tools.mod_grad(h_ref)
+    diagn["mod_h_ref"] = mod_h_ref
 
     if mask is not None:
         t_est = np.ma.array(t_est, mask=mask)
         mod_h_cm = np.ma.array(mod_h_cm, mask=mask)
-        mod_h_ref = np.ma.array(mod_h_ref, mask=mask) # UNA SOLA VOLTA!
+        mod_h_ref = np.ma.array(mod_h_ref, mask=mask)
 
+    #
+    # THIS COULD BE IMPROVED AND COMPUTED ONLY ONCE
+    #
 
-    # QUESTO SI POTREBBE CALCOLARE ANCHE UNA SOLA VOLTA...
     # Correct too low values of the gradient for the CM
-    mod_h_ref_OK = np.ma.where(mod_h_ref > par["eps_gradh"], mod_h_ref, par["eps_gradh"] ) # UNA SOLA VOLTA!
-#    print(mod_h_ref_OK)
+    mod_h_ref_OK = np.ma.where(mod_h_ref > par["eps_gradh"], mod_h_ref, par["eps_gradh"] )
     beta = np.minimum(par["c"]*mod_h_ref_OK, np.ones(mod_h_ref_OK.shape))
 
 
@@ -132,18 +120,16 @@ def update_t(h_cm, h_ref, t_est, t_min, t_max, par, mask=None, mode="arithmetic"
     # (this is not as critical as for grad(h_ref))
     mod_h_cm_OK = np.ma.where(mod_h_cm > par["eps_gradh"], mod_h_cm, par["eps_gradh"])
     
-    # Save the number of points where the correction is applied
-#    diagn["beta_size"] = 100*np.sum(par["c"]*mod_h_ref_OK < np.ones(mod_h_ref_OK.shape))/np.sum(~mask)
     # Update T
 
     t_new = t_est*(1.0 + beta*(mod_h_cm_OK-mod_h_ref_OK)/mod_h_ref_OK)
 
     t_new = np.ma.where(t_new > t_max, t_max, t_new)
     t_new = np.ma.where(t_new < t_min, t_min, t_new)
-#    if mask is not None:
-#        t_new = np.ma.array(t_new, mask=mask)
 
-#    print(type(t_new))
+    #    if mask is not None:
+    #        t_new = np.ma.array(t_new, mask=mask)
+    #    print(type(t_new))
 
     return t_new.reshape(1, t_new.shape[0], t_new.shape[1]), h_cm_grad[0], h_cm_grad[1]
 
@@ -177,6 +163,7 @@ def beta_size(h_ref, par, mask):
 
     return beta_size, h_ref_grad[0], h_ref_grad[1]
 
+
 def beta_size2(gmod_ref, par):
     """
     Compute the % of grad(h_ref) values influenced by the parameter
@@ -187,17 +174,13 @@ def beta_size2(gmod_ref, par):
             The reference head fields
     Returns:
         The % of cells affected by the parameter Beta
-
-    QUI SI POTREBBE FARE IN MODO DI AUTOMATIZZARE LA SCELTA DI C
-
     """
-
 
     # Correct too low values of the gradient for the CM
     gmod_ref_OK = np.ma.where(gmod_ref > par["eps_gradh"], gmod_ref, par["eps_gradh"])
     
     # Save the number of points where the correction is applied
-    # "cprop" È LA PERCENTUALE DI PUNTI DOVE VORREMMO CORREGGERE IL GRADIENTE
+    # "cprop" is the % of points where we would like to correct the gradient
     q = np.quantile(gmod_ref_OK, par["cprop"])
     c = 1.0/q
     beta_size = 100*np.sum(c*gmod_ref_OK < np.ones(gmod_ref_OK.shape))/gmod_ref_OK.size
@@ -245,10 +228,12 @@ def update_t2(h_cm, gmod_cm, h_ref, gmod_ref, t_cm, t_minmax, par, ds=None):
     t_cm = t_cm[0,:,:]
     
 
-    # QUESTO SI POTREBBE CALCOLARE ANCHE UNA SOLA VOLTA...
+    #
+    # THIS COULD BE COMPUTED ONLY ONCE TO OPTIMIZE
+    #
+
     # Correct too low values of the gradient for the CM
-    gmod_ref_OK = np.where(gmod_ref > par["eps_gradh"], gmod_ref, par["eps_gradh"] ) # UNA SOLA VOLTA!
-#    print(mod_h_ref_OK)
+    gmod_ref_OK = np.where(gmod_ref > par["eps_gradh"], gmod_ref, par["eps_gradh"] )
     beta = np.minimum(par["c"][ds]*gmod_ref_OK, np.ones(gmod_ref_OK.shape))
 
 
@@ -257,16 +242,15 @@ def update_t2(h_cm, gmod_cm, h_ref, gmod_ref, t_cm, t_minmax, par, ds=None):
     gmod_cm_OK = np.where(gmod_cm > par["eps_gradh"], gmod_cm, par["eps_gradh"])
     
     # Save the number of points where the correction is applied
-#    diagn["beta_size"] = 100*np.sum(par["c"]*mod_h_ref_OK < np.ones(mod_h_ref_OK.shape))/np.sum(~mask)
+    #    diagn["beta_size"] = 100*np.sum(par["c"]*mod_h_ref_OK < np.ones(mod_h_ref_OK.shape))/np.sum(~mask)
     # Update T
 
     t_new = t_cm*(1.0 + beta*(gmod_cm_OK-gmod_ref_OK)/gmod_ref_OK)
 
     t_new = np.where(t_new > t_minmax[1], t_minmax[1], t_new)
     t_new = np.where(t_new < t_minmax[0], t_minmax[0], t_new)
-#    if mask is not None:
-#        t_new = np.ma.array(t_new, mask=mask)
-
-#    print(type(t_new))
+    #    if mask is not None:
+    #        t_new = np.ma.array(t_new, mask=mask)
+    #    print(type(t_new))
 
     return t_new.reshape(1, t_new.shape[0], t_new.shape[1])#, h_cm_grad[0], h_cm_grad[1]

@@ -31,25 +31,17 @@
 
 :Usage:
 
-    Explain here how to use it.
-
-:Parameters:
+    See the documentation and example files.
 
 :Version:
 
-    0.1 , YYYY-MM-DD :
+    See file setup.py
 
-        * First version
+    Last modification: 2020/11/06
 
 :Authors:
 
     Alessandro Comunian
-
-.. notes::
-
-.. warning::
-
-.. limitations::
 
 .. future developments::
 
@@ -58,8 +50,6 @@
 .. research directions::
     
     - Investigate what happens when the number of iteration increases.
-    - Try with a as more tomographic as possible approach, where flow is 
-      run along many direction, to check the limits of the methodology.
     - Check different initializations of the Tini.
 
 """
@@ -67,7 +57,6 @@
 import numpy as np
 import os
 import matplotlib.pylab as pl
-import matplotlib 
 from mpl_toolkits.axes_grid1 import make_axes_locatable
 from matplotlib.colors import LogNorm
 import scipy.stats as ss
@@ -76,7 +65,6 @@ import flopy
 
 # This is to generate the heterogeneous K
 import gstools as gs
-
 
 # create logger
 module_logger = logging.getLogger('cmmpy.tools')
@@ -91,12 +79,15 @@ edge_order = 2
 fixed_odg_T = 2
 
 # Some settins useful for the fonts
-matplotlib.rcParams['mathtext.fontset'] = 'custom'
-matplotlib.rcParams['mathtext.rm'] = 'Bitstream Vera Sans'
-matplotlib.rcParams['mathtext.it'] = 'Bitstream Vera Sans:italic'
-matplotlib.rcParams['mathtext.bf'] = 'Bitstream Vera Sans:bold'
-pl.rc('text', usetex=True)
-pl.rc('text.latex', preamble=r'\usepackage{siunitx}')
+#
+# UNCOMMENT THIS TO HAVE A MORE LaTeX LIKE LOOK.
+# 
+# matplotlib.rcParams['mathtext.fontset'] = 'custom'
+# matplotlib.rcParams['mathtext.rm'] = 'Bitstream Vera Sans'
+# matplotlib.rcParams['mathtext.it'] = 'Bitstream Vera Sans:italic'
+# matplotlib.rcParams['mathtext.bf'] = 'Bitstream Vera Sans:bold'
+# pl.rc('text', usetex=True)
+# pl.rc('text.latex', preamble=r'\usepackage{siunitx}')
 
 def plot_h(h, modelname, out_dir="out", mode="ref", extent=None, ptype="imshow", mask=None):
     """
@@ -109,8 +100,8 @@ def plot_h(h, modelname, out_dir="out", mode="ref", extent=None, ptype="imshow",
         
     mode_opt = {}
     name_opt = {}
-    mode_opt["ref"] = "$h^\mathrm{(ref)}$ ($\si{m}$)"
-    mode_opt["BCs"] = "Fixed $h$ BCs ($\si{m}$)"
+    mode_opt["ref"] = "$h^\mathrm{(ref)}$ ($\mathrm{m}$)"
+    mode_opt["BCs"] = "Fixed $h$ BCs ($\mathrm{m}$)"
     name_opt["ref"] = "ref"
     name_opt["fwd"] = "fwd"
     name_opt["BCs"] = "BCs"    
@@ -136,8 +127,8 @@ def plot_h(h, modelname, out_dir="out", mode="ref", extent=None, ptype="imshow",
         cs = ax.contour(np.flipud(h), levels=levels, extent=extent)
         cax = divider.append_axes("right", size="5%", pad=0.05)
         ax.clabel(cs, fmt="%.2f")
-        ax.set_xlabel("$x$ ($\si{m}$)")
-        ax.set_ylabel("$y$ ($\si{m}$)")
+        ax.set_xlabel("$x$ ($\mathrm{m}$)")
+        ax.set_ylabel("$y$ ($\mathrm{m}$)")
         cax.remove()
         #        pl.colorbar(cs, cax=cax)
         file_name = os.path.join(out_dir, '{0}_h_{1}-contour.png'.format(modelname, name_opt[mode]))
@@ -155,20 +146,13 @@ def plot_h_mds(h, modelname, out_dir="out", mode="ref", extent=None, ptype="imsh
     for i, hh in enumerate(h):
         plot_h(hh, modelname, "{0}_ds{1}".format(out_dir, i), mode=mode, ptype=ptype, mask=mask)
 
-
-
-
-    
 def plot_t(t, modelname, out_dir="out", mode="ref", it=0, minmax=None, mask=None):
     """
     A function to plot the T fields
     """
-
-
-    
     mode_opt = {}
-    mode_opt["ref"] = "$T^\mathrm{(ref)}$ ($\si{m^2/s}$)"
-    mode_opt["iter"] = "$T^\mathrm{{{0}}}$ ($\si{{m^2/s}}$)".format(it)
+    mode_opt["ref"] = "$T^\mathrm{(ref)}$ ($\mathrm{m^2/s}$)"
+    mode_opt["iter"] = "$T^\mathrm{{{0}}}$ ($\mathrm{{m^2/s}}$)".format(it)
     name_opt = {}
     name_opt["ref"] = "ref"
     name_opt["iter"] = "iter{0:03d}".format(it)
@@ -199,6 +183,7 @@ def plot_t(t, modelname, out_dir="out", mode="ref", it=0, minmax=None, mask=None
     pl.savefig(os.path.join(out_dir, '{0}_T_{1}.png'.format(modelname, name_opt[mode])), dpi=DPI)
     pl.close()
 
+    
 def plot_t_mds(t, nb_ds, modelname, out_dir="out", mode="ref", it=0, minmax=None, mask=None):
     """
     Plot T fields when multiple data are available.
@@ -219,7 +204,7 @@ def plot_A(A, out_dir="out", it=0):
     A_max = np.max(np.abs(A))
     
     ax = pl.subplot(111)
-    ax.set_title("$A^{{{0}}}$ ($\si{{m}}$)".format(it))
+    ax.set_title("$A^{{{0}}}$ ($\mathrm{{m}}$)".format(it))
     
     im = ax.imshow(A[0,:,:], interpolation="none", vmin=-A_max, vmax=A_max, cmap="PiYG")
     
@@ -255,13 +240,15 @@ def mod_grad(data):
             Array containing the variable
     Returns:
         A 2D numpy array containing the result.
-
-    ATTENZIONE: CONTROLLARE CHE VENGA TENUTO CONTO ANCHE DELLA DISCRETIZZAZIONE!
     """
+    #
+    # DOUBLE CHECK HERE IF THE GRADIENT COMPUTATIONS TAKE INTO ACCOUNT THE
+    # SPATIAL DISCRETIZATION
+    #
+    
     # Compute the gradient
-    data_grad = np.gradient(data,2, edge_order=edge_order) # ATTENZIONE, VERIFICARE!
-    # SE SI VEDE LA DOCUMENTAZIONE DI GRAD, È POSSIBILE ANCHE SPECIFICARE IL DX E IL DY... QUINDI IL 2 NON È DETTO CHE SIA L'ASSE
-    # PERCHÈ AVEVO MESSO 2?
+    data_grad = np.gradient(data,2, edge_order=edge_order)
+
     # Compute the absolute value
     out = np.ma.sqrt(data_grad[0]**2+data_grad[1]**2)
     
@@ -483,7 +470,7 @@ def plot_t_err(t_ref, t_cm, modelname, out_dir="out", it=0, mask=None):
     pl.close()
 
 
-def plot_t_err2(t_ref, t_cm, modelname, out_dir="out", it=0, mask=None, scale="fixed"):
+def plot_t_err2(t_ref, t_cm, modelname, out_dir="out", it=0, mask=None):
     """
     A function to plot the error on T fields (log10(T_ref)-log10(T_CM))
     """
@@ -496,17 +483,10 @@ def plot_t_err2(t_ref, t_cm, modelname, out_dir="out", it=0, mask=None, scale="f
     #     t_ref = np.ma.array(t_ref, mask=mask)
     #     t_cm = np.ma.array(t_cm, mask=mask)
 
-    if scale == "fixed":
-        vmin  = -fixed_odg_T
-        vmax  = fixed_odg_T
-    elif scale == "symmetric":
-        vmax = np.max(err_abs)
-        vmin = -vmax
-
-
+    vmin  = -fixed_odg_T
+    vmax  = fixed_odg_T
 
     err = np.log10(t_ref)-np.log10(t_cm)
-    err_abs = np.abs(err)
     ax = pl.subplot(111)
     ax.set_title("$\log(T^\mathrm{{(ref)}})-\log(T^\mathrm{{{0}}})$".format(it))
     im = ax.imshow(err, vmin=vmin, vmax=vmax, interpolation="none",
@@ -516,7 +496,6 @@ def plot_t_err2(t_ref, t_cm, modelname, out_dir="out", it=0, mask=None, scale="f
     ax.set_xlabel("cells along $x$")
     ax.set_ylabel("cells along $y$")
     pl.colorbar(im, cax=cax)
-
 
     pl.savefig(os.path.join(out_dir, '{0}_Terr_iter{1:03d}.png'.format(modelname, it)), dpi=DPI)
     pl.close()
@@ -577,8 +556,8 @@ def merge_t(t_est, t_old, mode="arithmetic", grad=None, flow=None, mask=None):
     elif mode=="median":
         out = np.median(t_est, axis=0)
     elif mode=="mincorrX":
-        # QUESTA È UNA INTERPRETATIONE DIFFERENTE CHE HO DATO IO, NON
-        # CORRISPONDE PROPRIAMENTE ALLA MINIMUM CORRECTION
+        # This is an "optional" approach to the minimum correction algorithm.
+
         # Differences between old and new
         comp = np.array([np.abs(t_est[i, :,:,:]-t_old) for i in range(t_est.shape[0])])
 #        print(comp.shape)
@@ -617,12 +596,12 @@ def merge_t(t_est, t_old, mode="arithmetic", grad=None, flow=None, mask=None):
             for j in range(coords.shape[1]):
                 for k in range(coords.shape[2]):
                     out[i,j,k] = t_est[coords[i,j,k], i, j, k]
-    elif mode=="darcy":
-        # ATTENZIONE, QUI DEVO PROBABILMENTE RIVEDERE IL MODO IN CUI
-        # SONO CALCOLATI I FLUSSI, PERCHÈ MODFLOW LI RESTITUISCE SOLO
-        # PER LE CELLE INTERNE, MENTRE MAGARI PUÒ VALER LA PENA TENER
-        # CONTO ANCHE DEGLI ALTRI? MAH, IN PRINCIPIO NON DOVREBBE
-        # CAMBIARE GRAN CHE.
+    elif mode=="darcy_old":
+        #
+        # DOUBLE CHECK HERE HOW FLUXES ARE COMPUTED BY MODFLOW ALONG THE
+        # BOUNDARY CELLS.
+        #
+        
         dar_res = darcy_res(t_est, flow, grad)
         dar_res_min = np.min(dar_res, axis=0)
         # List of number of elements of each dataset that are <= min
@@ -630,9 +609,31 @@ def merge_t(t_est, t_old, mode="arithmetic", grad=None, flow=None, mask=None):
         # Select the index of the data-set with minimum correction.
         # (the one with more elements <= min...)
         module_logger.info("Cells numbers <= min darcy residuals: {0}".format( min_eq))
-        id_min = np.argmax(min_eq) # METTENDO QUI ARGMAX ESCONO COSE CURIOSE...
+        id_min = np.argmax(min_eq)
         module_logger.info("Index of the dataset selected by Darcy's residuals: {0}".format(id_min))
         out = t_est[id_min,:,:,:]
+    elif mode=="darcy":
+        #
+        # DOUBLE CHECK HERE HOW FLUXES ARE COMPUTED BY MODFLOW ALONG THE
+        # BOUNDARY CELLS.
+        #
+        out = np.zeros(t_est[0,:,:,:].shape)    
+        dar_res = darcy_res(t_est, flow, grad)
+#        dar_res_min = np.min(dar_res, axis=0)
+        # # List of number of elements of each dataset that are <= min
+        # min_eq = [np.sum( dar_res[i, :,:,:] <= dar_res_min) for i in range(dar_res.shape[0])]
+        # # Select the index of the data-set with minimum correction.
+        # # (the one with more elements <= min...)
+        # module_logger.info("Cells numbers <= min darcy residuals: {0}".format( min_eq))
+        # id_min = np.argmax(min_eq)
+        # module_logger.info("Index of the dataset selected by Darcy's residuals: {0}".format(id_min))
+        # out = t_est[id_min,:,:,:]
+        coords = np.argmin(dar_res, axis=0)
+        for i in range(coords.shape[0]):
+            for j in range(coords.shape[1]):
+                for k in range(coords.shape[2]):
+                    out[i,j,k] = t_est[coords[i,j,k], i, j, k]
+        
     else:
         module_logger.warning('Selected merging method ("{0}") unknown'.format(mode))
     if mask is not None:
@@ -642,7 +643,14 @@ def merge_t(t_est, t_old, mode="arithmetic", grad=None, flow=None, mask=None):
 
 def darcy_res(t, flow, grad):
     """
-    Compute the Darcy residuals according to formula...
+    Compute the Darcy residuals according to formula
+
+    .. math::
+
+        J = \left|Q/\sqrt{T} + \sqrt{T} \nabla h \right|
+
+    where :math:`Q` is the flow rate integrated over the aquifer thickness.
+    
     """
 
     # Compute the number of data sets
@@ -652,9 +660,9 @@ def darcy_res(t, flow, grad):
 
     for i in range(nb_ds):
         t_sqrt = np.sqrt(t[i,:,:,:])
-#        print(i, flow[i][0].shape, grad[i][0].shape)
-        dr_x = flow[i][0][0,:,:]/t_sqrt + t_sqrt/grad[0][i][:,:]
-        dr_y = flow[i][1][0,:,:]/t_sqrt + t_sqrt/grad[1][i][:,:]                        
+#        print(i, flow[i][0].shape, grad[0].shape)
+        dr_x = flow[i][0][0,:,:]/t_sqrt + t_sqrt*grad[0][i][:,:]
+        dr_y = flow[i][1][0,:,:]/t_sqrt + t_sqrt*grad[1][i][:,:]                        
         dar_res[i,:,:,:] = np.hypot(dr_x, dr_y)
     
     return dar_res
@@ -671,7 +679,7 @@ def vtk2Dto_spd_h(par, ds=0):
     """
     Read a VTK file containing 2D data and put the content
 
-    CHIARAMENTE PER IL MOMENTO FORNISCE SOLO DELLE CONDIZIONI DI DIRICHLET.
+    (Only for Dirichlet boundary conditions)
     """
 
     # Read an external file containing the shape of the domain
@@ -705,10 +713,12 @@ def run_fp(par, spd_h, k, sdir=None, ds=None, noise=False):
         k: The permeability field to be used.
         sdir: This is a "sub-directory" where the problem will be run
            in case this argument is provided.
-
-    NOTA: AL MOMENTO C'È UNA NOTAZIONE UN PO' IBRIDA PER IDENTIFICARE I DATA SET, CHE SI POTREBBERO
-    CHIAMARE PER NOME OPPURE PER L'INDICE RELATIVO ALL'ORDINE CON IL QUALE SONO STATI DEFINITI...
     """
+    #
+    # REMARK: AT THE MOMENT THE NOTATION TO DEFINE THE DIFFERENT DATA-SETS IS SOMEHOW INCOMPLETE, AS ONE
+    # COULD USE HERE THE NAME PROVIDED IN THE JSON FILE.
+    # IN THE FUTURE LOOK FOR A POSSIBLE IMPROVEMENT.
+    #
     nrow = par["fwd"]["ny"]
     ncol = par["fwd"]["nx"]
     delr = par["fwd"]["dy"]
@@ -823,6 +833,7 @@ def run_fp(par, spd_h, k, sdir=None, ds=None, noise=False):
             # Set std=0.0 in the JSON file to deactivate it
             module_logger.warning('Noise option "True", but noise std~0.0.')
 
+    # Get the discharge            
     spdis = bud.get_data(text='DATA-SPDIS')[0]
     pmv = flopy.plot.PlotMapView(gwf)
 
@@ -838,10 +849,12 @@ def run_fp(par, spd_h, k, sdir=None, ds=None, noise=False):
     pl.close()
 
     
-#    print(head.shape)
-
-    # - QUI POTREI GUARDARE COME FANNO SU get_gradient IN flopy PER TRATTARE CON I MASKED ARRAYS
-    # - TIENE CONTO ANCHE DELLA TAGLIA DELLE CELLE...
+    #
+    # IN THE FUTURE:
+    # - HAVE A LOOK AT "get_gradient" (IN flopy) TO CHECK HOW
+    #   MASKED ARRAYS ARE HANDLED.
+    # - CHECK IF THE CELL SIZE IS CONSIDERED IN THE COMPUTATION.
+    #
     gcol, grow = np.gradient(head[0,:,:], delc, delr, edge_order=edge_order)
 
     # Here compute the module of the gradient
@@ -852,7 +865,8 @@ def run_fp(par, spd_h, k, sdir=None, ds=None, noise=False):
     # from flopy.utils.postprocessing import get_gradients
 
     # grad = get_gradients(head, m, nodata=-9999)
-    
+
+
     return head, gcol, grow, gmod, spdis
 
 
@@ -892,8 +906,8 @@ def plot_t2(t, modelname, out_dir="out", mode="ref", it=0, minmax=None, mask=Non
 
     
     mode_opt = {}
-    mode_opt["ref"] = "$T^\mathrm{(ref)}$ ($\si{m^2/s}$)"
-    mode_opt["iter"] = "$T^\mathrm{{{0}}}$ ($\si{{m^2/s}}$)".format(it)
+    mode_opt["ref"] = "$T^\mathrm{(ref)}$ ($\mathrm{m^2/s}$)"
+    mode_opt["iter"] = "$T^\mathrm{{{0}}}$ ($\mathrm{{m^2/s}}$)".format(it)
     name_opt = {}
     name_opt["ref"] = "ref"
     name_opt["iter"] = "iter{0:03d}".format(it)
@@ -954,15 +968,15 @@ def wells_h4spd(h, par):
 def randpiezo(h, par, nb):
     """
     Generate a list of random location where to put some piezometers.
-
-    IN REALTÀ BASTEREBBE LEGGERE H PER POI AVERE LE INFO SULLA TAGLIA...
-
-    POI CI SAREBBE DA FARE ATTENZIONE ALLA SOVRAPPOSIZIONE CON I VERI POZZI!
-
-    SE ANCHE AGGIUNGO SOPRA UN POZZO CON FLUSSO NON NULLO, DOPO CONTROLLO
-    CHE NON CI SIANO COMUNQUE SOVRAPPOSIZIONI CON LA FUNZIONE
-    "check_piezowell_overlap"
     """
+    # NOTE:
+    # 1) HERE IS WOULD BE SUFFICIENT TO READ H TO HAVE INFO ABOUT THE SIZE
+    #
+    # DOUBLE CHECK:
+    # 1) OVERLAPPING WITH THE TRUE WELLS
+    # 2) WHEN A NULL FLUX WELL IS ADDED, DOUBLE CHECK THAT THERE ARE NO
+    #    OVERALAPPING BY USING THE FUNCTION "check_piezowell_overlap".
+    #
     border = 1
     spd = []
     ncol = par["fwd"]["ny"]
@@ -994,25 +1008,24 @@ def randpiezo(h, par, nb):
     
 def check_piezowell_overlap(spd_p, spd_w):
     """
-    Check if in the list of the randomly created piezometers there is some overallapping with an existing
-    well, and in case drop the overap from the list of piezometers.
+    Check if in the list of the randomly created piezometers there is some
+    overalapping with an existing well, and in case drop the overap from the
+    list of piezometers.
     """
     loc_wells = [loc[0] for loc in spd_w]
 
-    blacklist = []
     for elem in spd_p:
         if elem[0] in loc_wells:
             print("overlapping", elem)            
             spd_p.remove(elem)
-
-
             
     return spd_p    
 
 
-
 def spdis2mat(spdis, nrow, ncol):
     """
+    Distribute the discharge vectors into a 2D matrix.
+    
     """
     ncps = nrow*ncol
     qx = np.zeros((ncps))
@@ -1054,5 +1067,5 @@ def save_h_vtk(h, par, loc):
                   nx, ny, nlay, dx, dy, nx*ny))
 
     h = np.flipud(h[0,:,:])
-    np.savetxt(os.path.join(loc, "h.vtk"), np.c_[np.ravel(h)], header=header, fmt="%.3e", comments="")
+    np.savetxt(os.path.join(loc, "h.vtk"), np.c_[np.ravel(h)], header=header, fmt="%.6e", comments="")
     

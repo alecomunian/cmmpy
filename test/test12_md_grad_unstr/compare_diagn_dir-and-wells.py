@@ -62,7 +62,7 @@ for dia in diagnd:
     ax[0].plot(it, data["lmbd2"], "-o", label="{0}".format(dia["nbd"]))
 
 ax[0].set_xlabel("iteration")
-ax[0].set_title("a) $\lambda^2$ - ROT")
+ax[0].set_title("a) $\lambda^2$ - flow direction")
 x0a, x1a = ax[0].get_xlim()
 y0a, y1a = ax[0].get_ylim()
 print(y0a, y1a)
@@ -75,8 +75,7 @@ for dia in diagnw:
     ax[1].plot(it, data["lmbd2"], "-o", label="{0}".format(dia["wells"]))
 
 ax[1].set_xlabel("iteration")
-ax[1].set_title("b) $\lambda^2$ - WEL")
-#ax[1].set_xlim([0,14])
+ax[1].set_title("b) $\lambda^2$ - wells number")
 x0b, x1b = ax[1].get_xlim()
 print(x0b, x1b)
 y0b, y1b = ax[1].get_ylim()

@@ -53,12 +53,11 @@ T={}
 
 
 
-T["ref"] = np.load("../out/test01_c/01_perc100/out/test_T_ref.npy")
-T["100"] = np.load("../out/test01_c/01_perc100/out/test_T_iter009.npy")
-T["060"] = np.load("../out/test01_c/02_perc060/out/test_T_iter009.npy")
-T["030"] = np.load("../out/test01_c/03_perc030/out/test_T_iter009.npy")
-T["015"] = np.load("../out/test01_c/04_perc015/out/test_T_iter009.npy")
-T["000"] = np.load("../out/test01_c/05_perc000/out/test_T_iter009.npy")
+T["ref"] = np.load("../out/test10_md_natural/01_00/out/test_T_ref.npy")
+T["01"] = np.load("../out/test10_md_natural/01_00/out/test_T_iter009.npy")
+T["02"] = np.load("../out/test10_md_natural/02_00-10/out/test_T_iter009.npy")
+T["03"] = np.load("../out/test10_md_natural/03_00-10-20/out/test_T_iter009.npy")
+T["04"] = np.load("../out/test10_md_natural/04_00-10-20-30/out/test_T_iter009.npy")
 
 t_min = np.min(T["ref"])
 t_max = np.max(T["ref"])
@@ -67,20 +66,19 @@ t_max = np.max(T["ref"])
 
 fig, ax = pl.subplots(2,3, sharex=True, sharey=True, figsize=((8,4)))
 
-coords = [(0,0),(0,1),(0,2),(1,0),(1,1),(1,2)]
-item = ["ref", "100", "060", "030", "015", "000"]
-xlab = [False, False, False, True, True, True]
-ylab = [True, False, False, True, False, False]
+coords = [(0,0),(0,1),(0,2),(1,1),(1,2)]
+item = ["ref", "01", "02", "03", "04"]
+xlab = [False, False, False,  True, True]
+ylab = [True, False, False,  False, False]
 titles = [
-    "a) $T^\mathrm{(ref)}$",
-    "b) $T_{10}$, 100%",
-    "c) $T_{10}$, 60%",
-    "d) $T_{10}$, 30%",
-    "e) $T_{10}$, 15%",
-    "f) $T_{10}$, 0%"
+    "a) $T^\mathrm{ref}$",
+    "b) $T_{10}$ - 0°",
+    "c) $T_{10}$ - 0°, 10°",
+    "d) $T_{10}$ - 0°, 10°, 20°",
+    "e) $T_{10}$ - 0°, 10°, 20°, 30°"
     ]
 
-for i in range(6):
+for i in range(5):
     ax[coords[i]].set_title(titles[i])
     im = ax[coords[i]].imshow(T[item[i]][0,:,:], norm=LogNorm(vmin=t_min, vmax=t_max),
                         interpolation="none", cmap="inferno", extent=(0.0,lx,0.0,ly ))
@@ -101,10 +99,10 @@ fig.colorbar(im, cax=cbar_ax)
 # fig.text(0.5, 0.04, 'common X', ha='center')
 # fig.text(0.04, 0.5, 'common Y', va='center', rotation='vertical')
 
-
+ax[1, 0].axis('off')
 
 
 #pl.tight_layout()
 
-pl.savefig("compare_T_c.png", dpi=400)
-pl.savefig("compare_T_c.pdf")
+pl.savefig("compare_T_dir", dpi=400)
+pl.savefig("compare_T_dir.pdf")
