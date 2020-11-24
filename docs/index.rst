@@ -17,7 +17,7 @@ hydraulic transmissivities", by A.Comunian and M.Giudici, submitted to Computers
 .. Contents:
    
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Contents:
 
    purpose	     

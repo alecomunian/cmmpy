@@ -5,7 +5,7 @@ Installing and using `cmmpy` should be relatively easy, and thanks to
 Python's flexibility, that should be feasible on many operative
 systems (OSs), including MS Windows, Mac OS X and Linux.
 
-
+|
 Requirements
 -----------------------
 
@@ -20,8 +20,8 @@ installed the binaries related to the corresponding MODFLOW package.
 
 .. note:: The current version of ``cmmpy`` is based on MODFLOW6
           compiled with the `double` option.
-
-Install ``cmmpy``
+|
+Installation
 -------------------------------
 
 The suggested way is to use ``pip`` (which should be also already

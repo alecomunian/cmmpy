@@ -60,7 +60,7 @@ html_show_sourcelink = False
 html_static_path = ['_static']
 
 html_logo = "logo.png"
-#html_theme_options = {
-#    'logo_only': True,
-#    'display_version': False,
-#}
+html_theme_options = {
+    'logo_only': True,
+    'display_version': False,
+}
