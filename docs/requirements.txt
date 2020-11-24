@@ -2,7 +2,7 @@ appdirs==1.4.3
 CacheControl==0.12.6
 certifi==2020.6.20
 chardet==3.0.4
--e git+https://@bitbucket.org:alecomunian/cmmpy.git@80edaaf7a38030309613a92ba958c46c8cad51b4#egg=cmmpy
+-e git+https://bitbucket.org/alecomunian/cmmpy.git@80edaaf7a38030309613a92ba958c46c8cad51b4#egg=cmmpy
 colorama==0.4.3
 contextlib2==0.6.0
 cycler==0.10.0
