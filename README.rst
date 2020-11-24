@@ -1,5 +1,5 @@
 README	
-======
+=========
 
 This is the README file for a collection of Python scripts that implement
 the Comparison Model Method (CMM, [1]_, [2]_, [3]_ and [4]_).
@@ -54,23 +54,28 @@ In addition to the common Python modules ``numpy``, ``scipy`` and
 Download and install
 -----------------------------
 
-A the moment the package is **not** available from the Python Package
-Index repository, therefore to install it you
-need to:
+The suggested way is to use ``pip`` (which should be also already
+available with `Anaconda`).
 
-1) Download or clone the repository from the link
-   `https://bitbucket.org/alecomunian/cmmpy
-   <https://bitbucket.org/alecomunian/cmmpy>`_,
-   and unpack it if needed.
-2) Move into the project directory (``cd cmmpy``) and from the command line run::
+``cmmpy`` is available at the `Python Package Index repository
+<https://pypi.org/project/cmmpy/>`_. Therefore, in can be easily
+installed (together with its dependencies) with the command::
+
+    pip install cmmpy
+
+Alternatively, if you prefer to download the sources from
+`https://bitbucket.org/alecomunian/cmmpy
+<https://bitbucket.org/alecomunian/cmmpy>`_, you can:
+
+1) Clone or download this repository on your hard drive.
+2) If required, unpack it and ``cd cmmpy``.
+3) Inside the project directory, from the command line::
 
      pip install -e .
 
-3) To check if the installation worked, open a Python terminal and try::
+4) To check if it worked, open a Python terminal and try::
 
-       import cmmpy
-   
-   If there are no errors, then the installation will probably work.
+     import cmmpy
 
 |
 

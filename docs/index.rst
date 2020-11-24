@@ -20,8 +20,10 @@ hydraulic transmissivities", by A.Comunian and M.Giudici, submitted to Computers
    :maxdepth: 2
    :caption: Contents:
 
+   purpose	     
+   install	     
 ..   purpose
-   install
+
 ..   usage
 ..   cmmpy
 
