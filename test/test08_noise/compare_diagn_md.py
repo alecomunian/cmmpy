@@ -49,43 +49,43 @@ def plotta(diagn, ax):
 diagn = {}
 
 # South direction
-diagn["01S"] = {"file": "../out/test07_md_paper/01_std00_S/out/diagn.csv", "std": 0.00, "data": "S", 'lh': False }
-diagn["02S"] = {"file": "../out/test07_md_paper/01_std01_S/out/diagn.csv", "std": 0.01, "data": "S", 'lh': True }
-diagn["03S"] = {"file": "../out/test07_md_paper/01_std02_S/out/diagn.csv", "std": 0.02, "data": "S", 'lh': True }
-diagn["04S"] = {"file": "../out/test07_md_paper/01_std03_S/out/diagn.csv", "std": 0.03, "data": "S", 'lh': False }
-diagn["05S"] = {"file": "../out/test07_md_paper/01_std04_S/out/diagn.csv", "std": 0.04, "data": "S", 'lh': False }
-diagn["06S"] = {"file": "../out/test07_md_paper/01_std05_S/out/diagn.csv", "std": 0.05, "data": "S", 'lh': False }
-diagn["07S"] = {"file": "../out/test07_md_paper/01_std06_S/out/diagn.csv", "std": 0.06, "data": "S", 'lh': False }
-diagn["08S"] = {"file": "../out/test07_md_paper/01_std07_S/out/diagn.csv", "std": 0.07, "data": "S", 'lh': False }
-diagn["09S"] = {"file": "../out/test07_md_paper/01_std08_S/out/diagn.csv", "std": 0.08, "data": "S", 'lh': False }
-diagn["10S"] = {"file": "../out/test07_md_paper/01_std09_S/out/diagn.csv", "std": 0.09, "data": "S", 'lh': False }
-diagn["11S"] = {"file": "../out/test07_md_paper/01_std10_S/out/diagn.csv", "std": 0.10, "data": "S", 'lh': False }
+diagn["01S"] = {"file": "../out/test08_noise/01_std00_S/out/diagn.csv", "std": 0.00, "data": "S", 'lh': False }
+diagn["02S"] = {"file": "../out/test08_noise/01_std01_S/out/diagn.csv", "std": 0.01, "data": "S", 'lh': True }
+diagn["03S"] = {"file": "../out/test08_noise/01_std02_S/out/diagn.csv", "std": 0.02, "data": "S", 'lh': True }
+diagn["04S"] = {"file": "../out/test08_noise/01_std03_S/out/diagn.csv", "std": 0.03, "data": "S", 'lh': False }
+diagn["05S"] = {"file": "../out/test08_noise/01_std04_S/out/diagn.csv", "std": 0.04, "data": "S", 'lh': False }
+diagn["06S"] = {"file": "../out/test08_noise/01_std05_S/out/diagn.csv", "std": 0.05, "data": "S", 'lh': False }
+diagn["07S"] = {"file": "../out/test08_noise/01_std06_S/out/diagn.csv", "std": 0.06, "data": "S", 'lh': False }
+diagn["08S"] = {"file": "../out/test08_noise/01_std07_S/out/diagn.csv", "std": 0.07, "data": "S", 'lh': False }
+diagn["09S"] = {"file": "../out/test08_noise/01_std08_S/out/diagn.csv", "std": 0.08, "data": "S", 'lh': False }
+diagn["10S"] = {"file": "../out/test08_noise/01_std09_S/out/diagn.csv", "std": 0.09, "data": "S", 'lh': False }
+diagn["11S"] = {"file": "../out/test08_noise/01_std10_S/out/diagn.csv", "std": 0.10, "data": "S", 'lh': False }
 
 # S+SW
-diagn["01S-SW"] = {"file": "../out/test07_md_paper/02_std00_S-SW/out/diagn.csv", "std": 0.00, "data": "S-SW", 'lh': False }
-diagn["02S-SW"] = {"file": "../out/test07_md_paper/02_std01_S-SW/out/diagn.csv", "std": 0.01, "data": "S-SW", 'lh': True }
-diagn["03S-SW"] = {"file": "../out/test07_md_paper/02_std02_S-SW/out/diagn.csv", "std": 0.02, "data": "S-SW", 'lh': True }
-diagn["04S-SW"] = {"file": "../out/test07_md_paper/02_std03_S-SW/out/diagn.csv", "std": 0.03, "data": "S-SW", 'lh': True }
-diagn["05S-SW"] = {"file": "../out/test07_md_paper/02_std04_S-SW/out/diagn.csv", "std": 0.04, "data": "S-SW", 'lh': False }
-diagn["06S-SW"] = {"file": "../out/test07_md_paper/02_std05_S-SW/out/diagn.csv", "std": 0.05, "data": "S-SW", 'lh': True }
-diagn["07S-SW"] = {"file": "../out/test07_md_paper/02_std06_S-SW/out/diagn.csv", "std": 0.06, "data": "S-SW", 'lh': False }
-diagn["08S-SW"] = {"file": "../out/test07_md_paper/02_std07_S-SW/out/diagn.csv", "std": 0.07, "data": "S-SW", 'lh': False }
-diagn["09S-SW"] = {"file": "../out/test07_md_paper/02_std08_S-SW/out/diagn.csv", "std": 0.08, "data": "S-SW", 'lh': False }
-diagn["10S-SW"] = {"file": "../out/test07_md_paper/02_std09_S-SW/out/diagn.csv", "std": 0.09, "data": "S-SW", 'lh': False }
-diagn["11S-SW"] = {"file": "../out/test07_md_paper/02_std10_S-SW/out/diagn.csv", "std": 0.10, "data": "S-SW", 'lh': False }
+diagn["01S-SW"] = {"file": "../out/test08_noise/02_std00_S-SW/out/diagn.csv", "std": 0.00, "data": "S-SW", 'lh': False }
+diagn["02S-SW"] = {"file": "../out/test08_noise/02_std01_S-SW/out/diagn.csv", "std": 0.01, "data": "S-SW", 'lh': True }
+diagn["03S-SW"] = {"file": "../out/test08_noise/02_std02_S-SW/out/diagn.csv", "std": 0.02, "data": "S-SW", 'lh': True }
+diagn["04S-SW"] = {"file": "../out/test08_noise/02_std03_S-SW/out/diagn.csv", "std": 0.03, "data": "S-SW", 'lh': True }
+diagn["05S-SW"] = {"file": "../out/test08_noise/02_std04_S-SW/out/diagn.csv", "std": 0.04, "data": "S-SW", 'lh': False }
+diagn["06S-SW"] = {"file": "../out/test08_noise/02_std05_S-SW/out/diagn.csv", "std": 0.05, "data": "S-SW", 'lh': True }
+diagn["07S-SW"] = {"file": "../out/test08_noise/02_std06_S-SW/out/diagn.csv", "std": 0.06, "data": "S-SW", 'lh': False }
+diagn["08S-SW"] = {"file": "../out/test08_noise/02_std07_S-SW/out/diagn.csv", "std": 0.07, "data": "S-SW", 'lh': False }
+diagn["09S-SW"] = {"file": "../out/test08_noise/02_std08_S-SW/out/diagn.csv", "std": 0.08, "data": "S-SW", 'lh': False }
+diagn["10S-SW"] = {"file": "../out/test08_noise/02_std09_S-SW/out/diagn.csv", "std": 0.09, "data": "S-SW", 'lh': False }
+diagn["11S-SW"] = {"file": "../out/test08_noise/02_std10_S-SW/out/diagn.csv", "std": 0.10, "data": "S-SW", 'lh': False }
 
 # S+SW+W+NW
-diagn["01S-SW-W-NW"] = {"file": "../out/test07_md_paper/04_std00_S-SW-W-NW/out/diagn.csv", "std": 0.00, "data": "S-SW-W-NW", 'lh': False }
-diagn["02S-SW-W-NW"] = {"file": "../out/test07_md_paper/04_std01_S-SW-W-NW/out/diagn.csv", "std": 0.01, "data": "S-SW-W-NW", 'lh': True }
-diagn["03S-SW-W-NW"] = {"file": "../out/test07_md_paper/04_std02_S-SW-W-NW/out/diagn.csv", "std": 0.02, "data": "S-SW-W-NW", 'lh': True }
-diagn["04S-SW-W-NW"] = {"file": "../out/test07_md_paper/04_std03_S-SW-W-NW/out/diagn.csv", "std": 0.03, "data": "S-SW-W-NW", 'lh': True }
-diagn["05S-SW-W-NW"] = {"file": "../out/test07_md_paper/04_std04_S-SW-W-NW/out/diagn.csv", "std": 0.04, "data": "S-SW-W-NW", 'lh': True }
-diagn["06S-SW-W-NW"] = {"file": "../out/test07_md_paper/04_std05_S-SW-W-NW/out/diagn.csv", "std": 0.05, "data": "S-SW-W-NW", 'lh': False }
-diagn["07S-SW-W-NW"] = {"file": "../out/test07_md_paper/04_std06_S-SW-W-NW/out/diagn.csv", "std": 0.06, "data": "S-SW-W-NW", 'lh': True }
-diagn["08S-SW-W-NW"] = {"file": "../out/test07_md_paper/04_std07_S-SW-W-NW/out/diagn.csv", "std": 0.07, "data": "S-SW-W-NW", 'lh': False }
-diagn["09S-SW-W-NW"] = {"file": "../out/test07_md_paper/04_std08_S-SW-W-NW/out/diagn.csv", "std": 0.08, "data": "S-SW-W-NW", 'lh': False }
-diagn["10S-SW-W-NW"] = {"file": "../out/test07_md_paper/04_std09_S-SW-W-NW/out/diagn.csv", "std": 0.09, "data": "S-SW-W-NW", 'lh': False }
-diagn["11S-SW-W-NW"] = {"file": "../out/test07_md_paper/04_std10_S-SW-W-NW/out/diagn.csv", "std": 0.10, "data": "S-SW-W-NW", 'lh': False }
+diagn["01S-SW-W-NW"] = {"file": "../out/test08_noise/04_std00_S-SW-W-NW/out/diagn.csv", "std": 0.00, "data": "S-SW-W-NW", 'lh': False }
+diagn["02S-SW-W-NW"] = {"file": "../out/test08_noise/04_std01_S-SW-W-NW/out/diagn.csv", "std": 0.01, "data": "S-SW-W-NW", 'lh': True }
+diagn["03S-SW-W-NW"] = {"file": "../out/test08_noise/04_std02_S-SW-W-NW/out/diagn.csv", "std": 0.02, "data": "S-SW-W-NW", 'lh': True }
+diagn["04S-SW-W-NW"] = {"file": "../out/test08_noise/04_std03_S-SW-W-NW/out/diagn.csv", "std": 0.03, "data": "S-SW-W-NW", 'lh': True }
+diagn["05S-SW-W-NW"] = {"file": "../out/test08_noise/04_std04_S-SW-W-NW/out/diagn.csv", "std": 0.04, "data": "S-SW-W-NW", 'lh': True }
+diagn["06S-SW-W-NW"] = {"file": "../out/test08_noise/04_std05_S-SW-W-NW/out/diagn.csv", "std": 0.05, "data": "S-SW-W-NW", 'lh': False }
+diagn["07S-SW-W-NW"] = {"file": "../out/test08_noise/04_std06_S-SW-W-NW/out/diagn.csv", "std": 0.06, "data": "S-SW-W-NW", 'lh': True }
+diagn["08S-SW-W-NW"] = {"file": "../out/test08_noise/04_std07_S-SW-W-NW/out/diagn.csv", "std": 0.07, "data": "S-SW-W-NW", 'lh': False }
+diagn["09S-SW-W-NW"] = {"file": "../out/test08_noise/04_std08_S-SW-W-NW/out/diagn.csv", "std": 0.08, "data": "S-SW-W-NW", 'lh': False }
+diagn["10S-SW-W-NW"] = {"file": "../out/test08_noise/04_std09_S-SW-W-NW/out/diagn.csv", "std": 0.09, "data": "S-SW-W-NW", 'lh': False }
+diagn["11S-SW-W-NW"] = {"file": "../out/test08_noise/04_std10_S-SW-W-NW/out/diagn.csv", "std": 0.10, "data": "S-SW-W-NW", 'lh': False }
 
 
 

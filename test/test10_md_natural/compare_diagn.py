@@ -58,8 +58,8 @@ for dia in diagn:
 pl.xlabel("iteration")
 pl.title("$\lambda^2$")    
 pl.legend()
-pl.savefig("nbd_diagn.png", dpi=400)
-pl.savefig("nbd_diagn.pdf")
+pl.savefig("nbd_diagnA.png", dpi=400)
+pl.savefig("nbd_diagnA.pdf")
 pl.show()    
     
 

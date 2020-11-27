@@ -104,8 +104,8 @@ for i, dia in enumerate(diagn2):
     
 ax[0].set_xlabel("iteration")
 ax[1].set_xlabel("iteration")
-ax[0].set_title("$\lambda^2$")
-ax[1].set_title("MAE on $h$")
+ax[0].set_title("a) $\lambda^2$")
+ax[1].set_title("b) MAE on $h$")
 
 
 custom_lines = [Line2D([0], [0], color=colors[0]),

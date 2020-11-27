@@ -38,8 +38,8 @@ import matplotlib.pylab as pl
 from mpl_toolkits.axes_grid1 import make_axes_locatable
 import numpy as np
 import json
-from matplotlib import rc
-rc('text', usetex=True)
+#from matplotlib import rc
+#rc('text', usetex=True)
 
 file_json = "04_00-10-20-30/test.json"
 # Read an external file containing the parameters
@@ -138,7 +138,7 @@ ax[1,1].set_xlabel("$x$ (m)")
 #cax.remove()
 
 pl.tight_layout()
-pl.savefig("hrefs.png", dpi=400)
-pl.savefig("hrefs.pdf")
+pl.savefig("hrefsA.png", dpi=400)
+pl.savefig("hrefsA.pdf")
 
 
