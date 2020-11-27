@@ -5,7 +5,7 @@ with open("README.rst", "r") as fh:
 
 setuptools.setup(
     name="cmmpy",
-    version="0.1.2",
+    version="0.1.3",
     author="Alessandro Comunian",
     author_email="alessandro.comunian@unimi.it",
     description="Implementation of the Comparison Model Method",
