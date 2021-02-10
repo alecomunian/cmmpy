@@ -7,7 +7,10 @@ the Comparison Model Method (CMM, [1]_, [2]_, [3]_ and [4]_).
 For more details about the tests and the methodology, please see the
 manuscript "Improving the robustness of the Comparison Model Method
 for the identification of hydraulic transmissivities" by A.Comunian
-and M.Giudici (submitted to `Computers & Geosciences`).
+and M.Giudici, `Computers & Geosciences`, DOI:
+`https://doi.org/10.1016/j.cageo.2021.104705
+<https://doi.org/10.1016/j.cageo.2021.104705>`_.
+The documentation is available at `https://cmmpy.readthedocs.io <https://cmmpy.readthedocs.io/en/latest/>`_.
 
 |
 
