@@ -21,7 +21,9 @@ hydraulic transmissivities", by A.Comunian and M.Giudici, submitted to Computers
    :caption: Contents:
 
    purpose	     
-   install	     
+   install
+   tutorial
+   
 ..   purpose
 
 ..   usage
