@@ -50,10 +50,20 @@ Parameter file
 --------------------
 
 As mentioned in the previous section, the main modifications that a
-used should do to apply the CMM to his case study should be on the
-data files and to the input parameter file (JSON file). An example of
-this file is provided for many test cases in the bitbucket/github
-repositories in the aforementioned `test` folder.
+user should do to apply the CMM to his case study should be made on
+the data files and to the input parameter file (JSON file). An example
+of this file is provided for many test cases in the bitbucket/github
+repositories in the aforementioned `test` folder. For example,
+hereinafter it is provided a list of the entries of the file ``test.json`` contained in the
+folder ``test/test07_md_paper``, explained one by one:
+
+wdir
+    This is the working directory that will contain all the output of the CMM run.
+data
+    Directory containing the input data, like for example the files with the boundary
+    conditions and the shape of the domain (see for example the folder into ``test/data``).
+
+
 
 
 
