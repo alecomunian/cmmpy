@@ -56,9 +56,26 @@ of this file is provided for many test cases in the bitbucket/github
 repositories in the aforementioned `test` folder. For example,
 hereinafter it is provided a list of the entries of the file ``test.json`` contained in the
 folder ``test/test07_md_paper``, explained one by one.
-In general, 
+In general, the parameters are grouped into four categories:
 
-``general-wdir``
+``general``
+    Contains some "general" parameters.
+    ``sdfg``
+        ciccio
+    ``pollo``
+        serg
+``fwd``
+    All the parameters related to the forward problem run.
+``t_gen``
+    All the parameters related to the generation of the syntetic :math:`T` distribution
+    which is used as reference.
+``cmm``
+    Here the parameters related to the Comparison Model Method (CMM).
+``noise``
+    Here the parameters related to the addition of noise to the input head fields.
+    
+
+``general->wdir``
     This is the working directory that will contain all the output of the CMM run.
 general-data
     Directory containing the input data, like for example the files with the boundary
