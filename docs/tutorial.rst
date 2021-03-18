@@ -55,14 +55,41 @@ the data files and to the input parameter file (JSON file). An example
 of this file is provided for many test cases in the bitbucket/github
 repositories in the aforementioned `test` folder. For example,
 hereinafter it is provided a list of the entries of the file ``test.json`` contained in the
-folder ``test/test07_md_paper``, explained one by one:
+folder ``test/test07_md_paper``, explained one by one.
+In general, 
 
-wdir
+``general-wdir``
     This is the working directory that will contain all the output of the CMM run.
-data
+general-data
     Directory containing the input data, like for example the files with the boundary
     conditions and the shape of the domain (see for example the folder into ``test/data``).
+general-out
+    Output folder
+fwd-ws
+    The workspace related to the Modflow problem
+fwd-name
+    Name of the modflow problem
+exe_name
+    The name of the modflow executable. In the example, the name ``mf6dbl`` is provided. However, in general,
+    a more common name would be ``mf6`` (if you are working on Linux of macOS) or ``mf6.exe``.
+    Clearly, if the binary file of your modflow is not in the system PATH, you could also set
+    here the explicit path.
+bcs
+    A file that contains codes that indicate  the type of the cells used for the boundary conditions.
+    See the next section for more details.
+nx, ny
+    Numer of cells along the :math:`x` and :math:`y` coordinates
+dx, dy
+    Size of the cells side (in meters)
+name
 
+
+Input data files
+---------------------------
+bla bla.
+
+
+    
 
 
 
