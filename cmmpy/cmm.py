@@ -59,7 +59,7 @@ import cmmpy.tools as tools
 # create logger
 module_logger = logging.getLogger('run_cmm.cmm')
 
-def update_t(h_cm, h_ref, t_est, t_min, t_max, par, mask=None, mode="arithmetic"):
+def update_t(h_cm, h_ref, t_est, t_min, t_max, par, mask=None, mode="geometric"):
     """
     Update the T of the CMM.
 

@@ -543,7 +543,7 @@ def plot_t_err3(t_ref, t_cm, modelname, out_dir="out", it=0, mask=None):
     pl.close()
     
 
-def merge_t(t_est, t_old, mode="arithmetic", grad=None, flow=None, mask=None):
+def merge_t(t_est, t_old, mode="geometric", grad=None, flow=None, mask=None):
     """ 
     Merge the T_est computed with different data sets.
     """
