@@ -178,7 +178,9 @@ required data files, you can run the inversion.  If you take as
 reference the folder structures provided on Github or Bitbucket, you
 should first move to the folder ``test``. Once there, from the shell,
 you can call the script ``run_cmm.py`` by providing the name of the
-JSON input file. For example, you could write::
+JSON input file. For example, you could write:
+
+.. code:: console
 
   ./run_cmm.py test07_md_paper/04_S-SW-W-NW/test.json
 
