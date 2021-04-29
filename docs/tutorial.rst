@@ -3,15 +3,15 @@ Tutorial
 
 This is a brief tutorial to illustrate how to run a simple application
 that makes use of the ``cmmpy``. For more details and more options,
-one can have a look at many examples avaiable in the bitbucket/github
-reposotories in the folder `test`. The files provided in the test
+one can have a look at many examples available in the bitbucket/github
+repositories in the folder `test`. The files provided in the test
 folder cover almost all the examples explored in the companion paper
 published in Computers and Geosciences by A.Comunian and M.Giudici,
 DOI: `10.1016/j.cageo.2021.104705
 <https://doi.org/10.1016/j.cageo.2021.104705>`_ (hereinafter, the
 *companion paper*).
 
-Example 1 - Tomographic approach
+Example - Tomographic approach
 *******************************************
 
 This example is based on the implementation of the CMM with a
@@ -36,10 +36,10 @@ with `Parflow <https://www.parflow.org/>`_ as flow simulation engine.
 
 In the provided Python code, this is done in the function ``run_fp``
 of the module ``tool``. You can customize this function to suit your
-particular needs. However, if your have modelling assuption akin to
+particular needs. However, if your have modeling assumption akin to
 the one stated in the companion paper, then you will not need to
 customize this function too much, maybe even not. In fact, the code is
-written in order to delegate as much as possbile all the
+written in order to delegate as much as possible all the
 parameterization and a big part of the model settings to an editable
 ``json`` file, to avoid as much as possible edits on the
 function ``run_fp`` function. The content of this ``json`` file is
@@ -63,14 +63,14 @@ In general, the parameters are grouped into four categories:
 ``fwd``
     parameters related to the forward problem run.
 ``t_gen``
-    parameters related to the generation of the syntetic :math:`T` distribution
+    parameters related to the generation of the synthetic :math:`T` distribution
     which is used as reference. 
 ``cmm``
     parameters related to the Comparison Model Method (CMM).
 ``noise``
     parameters related to the addition of noise to the input head fields.
 
-Let us start to describe in details the sub-categories of the afore mentioned "main" categories:
+Let us start to describe in details the sub-categories of the aforementioned "main" categories:
 
 
 ``general["wdir"]``
@@ -102,7 +102,7 @@ Let us start to describe in details the sub-categories of the afore mentioned "m
     Size of the cells side (in meters)
 ``fwd["data_sets"]``
     This keyword contains the detailed description of all the multiple data sets that can be used within ``cmmpy`` to apply
-    the CMM with a tomopgraphyc approach. The main components of this keyword is a list, containing one dictionary for
+    the CMM with a tomographic approach. The main components of this keyword is a list, containing one dictionary for
     each data set. The dictionary contain the following keywords: ``name`` defines a name for the corresponding data set, which at
     the moment is not explicitly used inside the code, but that is useful as reference to the data set; ``h_BCs`` is the name
     of the VTK file (contained in the folder defined by the previously mentioned keyword ``data``) that contains the values
@@ -124,10 +124,10 @@ Let us start to describe in details the sub-categories of the afore mentioned "m
 ``t_gen["var"]``
     Variance of the heterogeneous field.
 ``t_gen["len_scale"]``
-    The scale lenght of the simulated heterogeneity.
+    The scale length of the simulated heterogeneity.
 
 ``cmm["nb_iter"]``
-    The maximum number of iterations required to run the CMM. For the case study analysed in the
+    The maximum number of iterations required to run the CMM. For the case study analyzed in the
     companion paper, 10 iteration were OK.
 ``cmm["cprop"]``
     The proportions of data to be rejected and where the low gradient values should be corrected.
@@ -140,7 +140,7 @@ Let us start to describe in details the sub-categories of the afore mentioned "m
     for more details.
 
 
-The same algorithm used for the generation of the syntetic field
+The same algorithm used for the generation of the synthetic field
 example is here used to generate a correlated noise field to be added
 to the input :math:`h` data. If you do not need to add noise to your data, simply set the value of ``std`` to 0.0.
 
@@ -151,7 +151,7 @@ to the input :math:`h` data. If you do not need to add noise to your data, simpl
 ``noise["var"]``
     Variance of the heterogeneous field.
 ``noise["len_scale"]``
-    The scale lenght of the simulated heterogeneity.
+    The scale length of the simulated heterogeneity.
     
 
 
@@ -163,13 +163,29 @@ in the folder ``test/data``.
 
 shape of the domain and cells type
     A matrix with the same shape of the domain should be provided,
-    with the letter ``I`` for `internal cells`, ``D`` for `Dirichet` fixed
+    with the letter ``I`` for `internal cells`, ``D`` for `Dirichlet` fixed
     head BCs, ``E`` for external cells.
     See for example the file ``bcs.txt`` in the folder ``test/data``.
 files containing the head BCs values
     These are VTK structured points files.
     
 
+Run the test
+-------------------------
 
+Once you set up all the parameters in the JSON file and provided the
+required data files, you can run the inversion.  If you take as
+reference the folder structures provided on Github or Bitbucket, you
+should first move to the folder ``test``. Once there, from the shell,
+you can call the script ``run_cmm.py`` by providing the name of the
+JSON input file. For example, you could write::
+
+  ./run_cmm.py test07_md_paper/04_S-SW-W-NW/test.json
+
+At the end of the run, you can find the intermediate and the output
+files into the folder defined in the JSON file, for example in the
+folder ``out/test07_md_paper/04_S-SW-W-NW/``.
+
+  
 
 
