@@ -8,14 +8,14 @@
 
 Welcome to the `cmmpy`'s documentation, a Python implementation of the
 comparison model method (CMM), a **direct** inversion method to obtain the
-hydraulic transmissivity :math:`T` of an aquifer.
+hydraulic transmissivity :math:`T` of a confined aquifer.
 
 .. figure:: _static/compare_T_dir_web.png
    :align: center
    :scale: 80%
    :alt: Reference T vs CMM inversion result
 
-   Syntetic reference :math:`T` field (left) and CMM inversion result, 10th iteration (right)
+   Synthetic reference :math:`T` field (left) and CMM inversion result, 10th iteration (right)
 
 
 This is the accompanying software of the manuscript "Improving the

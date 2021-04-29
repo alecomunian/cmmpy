@@ -72,103 +72,94 @@ In general, the parameters are grouped into four categories:
 
 Let us start to describe in details the sub-categories of the afore mentioned "main" categories:
 
-general
-*****************
 
-``wdir``
+``general["wdir"]``
     The working directory where all the output files will be saved.
-``data``
+``general["data"]``
     Directory containing some needed data sets. For example, the files containing the boundary conditions
     and the shape of the domain will be stored here. For examples of possible input files, you can have a
     look at the folder ``test/data``
-``out``
+``general["out"]``
     An output directory to save all the output needed by the flopy implementation.
 
 
-fwd
-********************
 
-``ws``
+``fwd["ws"]``
     The workspace related to the Modflow problem
-``name``
+``fwd["name"]``
     Name of the modflow problem
-``exe_name``
+``fwd["exe_name"]``
     The name of the modflow executable. In the example, the name ``mf6dbl`` is provided. However, in general,
     a more common name would be ``mf6`` (if you are working on Linux of macOS) or ``mf6.exe``.
     Clearly, if the binary file of your modflow is not in the system PATH, you could also set
     here the explicit path.
-``bcs``
+``fwd["bcs"]``
     A file that contains codes that indicate the type of the cells used for the boundary conditions.
     The next section `Input data files` contains a more detailed description of this input format.
-``nx``, ``ny``
+``fwd["nx"]``, ``fwd["ny"]``
     Numer of cells along the :math:`x` and :math:`y` coordinates
-``dx``, ``dy``
+``fwd["dx"]``, ``fwd["dy"]``
     Size of the cells side (in meters)
-``data_sets``
+``fwd["data_sets"]``
     This keyword contains the detailed description of all the multiple data sets that can be used within ``cmmpy`` to apply
     the CMM with a tomopgraphyc approach. The main components of this keyword is a list, containing one dictionary for
     each data set. The dictionary contain the following keywords: ``name`` defines a name for the corresponding data set, which at
     the moment is not explicitly used inside the code, but that is useful as reference to the data set; ``h_BCs`` is the name
     of the VTK file (contained in the folder defined by the previously mentioned keyword ``data``) that contains the values
     of the fixed head boundary conditions.
-``rch``
+``fwd["rch"]``
     This contains the numerical value of a diffuse recharge term.
-``wells_loc``
+``fwd["wells_loc"]``
     This should be a list containing three integers, that correspond to the cell location of the well
     (see for example the JSON files in the folder ``test/test06_wells1a1``)
-``well_ID``
+``fwd["well_ID"]``
     A reference name for the well.
-``well_q``
+``fwd["well_q"]``
     The abstraction rate of the well, with the same conventions used in `flopy`.
 
-t_gen
-******************
-
-``seed``
+``t_gen["seed"]``
     The seed for the pseudo-random generator
-``dim``
+``t_gen["dim"]``
     The dimension of the problem, 2D or 3D.
-``var``
+``t_gen["var"]``
     Variance of the heterogeneous field.
-``len_scale``
+``t_gen["len_scale"]``
     The scale lenght of the simulated heterogeneity.
 
-cmm
-****************
-
-``nb_iter``
+``cmm["nb_iter"]``
     The maximum number of iterations required to run the CMM. For the case study analysed in the
     companion paper, 10 iteration were OK.
-``cprop``
+``cmm["cprop"]``
     The proportions of data to be rejected and where the low gradient values should be corrected.
-``eps_gradh``
+``cmm["eps_gradh"]``
     A threshold value for the hydraulic gradient :math:`\grad (h)`.
-``mode``
+``cmm["mode"]``
     When using multiple data sets, this is the mode that is used to merge the :math:`T` computed with
     the different input data. Allowed values are `arithmetic`, `geometric`, `harmonic`, `median`, and `mincorr` (there is also
     an "alternative" `mincorrX`). Default value is `geometric`. See the code and the companion paper
     for more details.
 
-noise
-***********************
 
 The same algorithm used for the generation of the syntetic field
 example is here used to generate a correlated noise field to be added
 to the input :math:`h` data. If you do not need to add noise to your data, simply set the value of ``std`` to 0.0.
 
-``seed``
+``noise["seed"]``
     The seed for the pseudo-random generator
-``dim``
+``noise["dim"]``
     The dimension of the problem, 2D or 3D.
-``var``
+``noise["var"]``
     Variance of the heterogeneous field.
-``len_scale``
+``noise["len_scale"]``
     The scale lenght of the simulated heterogeneity.
     
 
 
 Input data files
 ---------------------------
+
+This is a brief description of some of the input data files contained
+in the folder ``test/data``.
 
 shape of the domain and cells type
     A matrix with the same shape of the domain should be provided,
