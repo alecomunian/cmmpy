@@ -247,6 +247,9 @@ def mod_grad(data):
     #
     
     # Compute the gradient
+    # NOTE: DOUBLE CHECK HERE THE MEANING OF THE 2ND ATTRIBUTE.
+    #       IN FACT, FROM THE DOCUMENTATION OF "gradient" ONE IS ALSO ALLOWED
+    #       TO EXPLICITLY DEFINE DX AND DY.
     data_grad = np.gradient(data,2, edge_order=edge_order)
 
     # Compute the absolute value
@@ -865,8 +868,7 @@ def run_fp(par, spd_h, k, sdir=None, ds=None, noise=False):
     # from flopy.utils.postprocessing import get_gradients
 
     # grad = get_gradients(head, m, nodata=-9999)
-
-
+    
     return head, gcol, grow, gmod, spdis
 
 
